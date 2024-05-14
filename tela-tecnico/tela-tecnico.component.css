@@ -1,0 +1,89 @@
+.bg {
+    background-color: #FEFAF2;
+    margin: 0;
+    padding: 0;
+    height: 100%;
+}
+
+.botao {
+    background-color: #E78686;
+}
+
+.botaofonte {
+    font-size: 20px;
+}
+
+.bg-cor {
+    background-color: #FFDFDF;
+}
+
+.vertical-line {
+    width: 1px;
+    height: 200px;
+    background-color: black;
+}
+
+a {
+    text-decoration: none;
+    color: black;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+table,
+th,
+td {
+    border: 1px solid black;
+}
+
+th,
+td {
+    padding: 8px;
+    text-align: left;
+}
+
+th {
+    background-color: #FFDFDF;
+}
+
+tr:nth-child(even) {
+    background-color: #FEFAF2;
+}
+
+tr:hover {
+    background-color: #FFDFDF;
+}
+
+select {
+    width: 100%;
+    padding: 6px;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+}
+
+.tabela {
+    background-color: #E78686;
+}
+
+.quant {
+    background-color: #FB9E9E;
+}
+
+.font {
+    font-size: 20px;
+}
+
+.tabela-com-scroll {
+    max-height: 500px;
+    overflow-y: auto;
+}
+.texomaximo{
+    max-width: 200px;
+    overflow: hidden; 
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
