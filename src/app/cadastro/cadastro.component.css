@@ -1,0 +1,26 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;1,300&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,500;1,500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter&display=swap');
+.bg {
+    background-color: #FEFAF2;
+}
+.img{
+    background-image: url(https://i.imgur.com/dX8edgp.gif);
+
+    min-height: 100vh;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.btn-cor{
+    background-color: #56e346;
+}
+.btn-cor-c{
+    background-color: #ed5353;
+}
+
+
+h2 {
+    font-family: 'Montserrat', sans-serif;
+    color: #E78686;
+}

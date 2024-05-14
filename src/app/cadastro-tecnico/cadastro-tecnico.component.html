@@ -1,0 +1,45 @@
+<div class="container-fluid bg">
+
+    <div class="row d-flex align-items-center">
+        <div class="col-md-6 img" id=""></div>
+        <div class="col-md-6" mt-5 mb-5>
+            <div class="row d-flex justify-content-center">
+                <div class="col-md-10 mr-4">
+                    <h2 class="text-center">Cadastro</h2>
+                    <div class="form-grup form-floating mb-3">
+                        <input [(ngModel)]='user.nome' class="form-control bd" type="text" name="nome"
+                            id="nome floatingInput" placeholder="Seu nome">
+                        <label for="nome floatingInput">Nome</label>
+
+                        <div class="form-grup form-floating mt-3">
+                            <input [(ngModel)]='user.email' class="form-control bd" type="text" name="usuario"
+                                id="usuario floatingInput" placeholder="Seu Email">
+                            <label for="usuario floatingInput">Email</label>
+
+                        </div>
+                        <br>
+                        <div class="form-grup form-floating mt-3">
+                            <input (input)='confirmSenha($event)' class="form-control bd" type="password" name="senha"
+                                id="senha floatingPassword" placeholder="Sua senha">
+                            <label for="senha floatingPassword">Senha</label>
+
+                            A senha deve conter no minimo 8 caracteres!
+                        </div>
+                        <br>
+                        <div class="form-grup form-floating ">
+                            <input [(ngModel)]='user.senha' class="form-control bd" type="password"
+                                name="confirmarSenha" id="confirmarSenha floatingPassword"
+                                placeholder="Confirme sua senha">
+                            <label for="confirmarSenha floatingPassword">Confirmar senha</label>
+                        </div>
+                        <br>
+                        <div class="d-flex justify-content-center">
+                            <button type="submit" class="btn btn-cor-c ms-4" routerLink="/inicio">Cancelar</button>
+                            <button type="submit" class="btn btn-cor ms-4" (click)='cadastrar()'>Cadastrar</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

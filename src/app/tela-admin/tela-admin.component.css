@@ -1,0 +1,29 @@
+.bg {
+    background-color: #FEFAF2;
+    margin: 0;
+    padding: 0;
+    height: 100%;
+}
+
+.botao {
+    background-color: #E78686;
+}
+
+.botaofonte {
+    font-size: 20px;
+}
+
+.bg-cor {
+    background-color: #FFDFDF;
+}
+
+.vertical-line {
+    width: 1px;
+    height: 200px;
+    background-color: black;
+}
+
+a {
+    text-decoration: none;
+    color: black;
+}

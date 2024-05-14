@@ -1,0 +1,94 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;1,300&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,500;1,500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter&display=swap');
+
+body {
+    background-color: #FEFAF2;
+    display: block;
+}
+
+h2 {
+    font-family: "Inter", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 15px;
+    text-align: center;
+    color: #5A5353;
+
+}
+
+.logo {
+    position: absolute;
+    top: 50px;
+    right: 38%;
+}
+
+.logo img {
+    max-width: 320px;
+    padding: 70px;
+
+}
+
+.cont {
+    font-family: "Inter", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
+    font-variation-settings: "slnt" 0;
+    border-style: solid;
+    border-radius: 21px;
+    border-width: 1px;
+    padding: 30px;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    padding: 30px 50px;
+    border-radius: 16px;
+    border-color: black;
+}
+
+.cont input[type="email"],
+.cont input[type="password"] {
+    font-family: "Inter", sans-serif;
+    width: 100%;
+    /* Ocupa toda a largura do contêiner do formulário */
+    margin-bottom: 10px;
+    padding: 5px;
+
+}
+
+.cont button {
+    font-family: "Inter", sans-serif;
+    font-size: 16px;
+    padding: 8px 16px;
+    background-color: #E78686;
+    color: #000000;
+    /* Cor do texto do botão */
+    border: none;
+    border-radius: 5px;
+    width: 150px;
+    height: 53px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    text-align: center;
+    display: inline-block;
+    vertical-align: middle;
+
+}
+
+.cont button:hover {
+    background-color: #FEFAF2;
+}
+
+
+.cadastre {
+    padding: 20px;
+    margin: 10px;
+    font-size: 15px;
+}
+
+.but {
+    text-align: center;
+}
