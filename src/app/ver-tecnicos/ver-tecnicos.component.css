@@ -1,0 +1,88 @@
+@import url('https://fonts.googleapis.com/css2?family=Inria+Serif:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter&display=swap');
+
+.bg {
+    background-color: #FEFAF2;
+    margin: 0;
+    padding: 0;
+    height: 100%;
+}
+
+.botao {
+    margin-right: 80px;
+    background-color: #E78686;
+}
+
+.botaofonte {
+    font-size: 20px;
+}
+
+.bg-cor {
+    background-color: #FFDFDF;
+}
+
+.vertical-line {
+    width: 1px;
+    height: 200px;
+    background-color: black;
+}
+
+p {
+    font-family: "Inria Serif", serif;
+    font-weight: 400;
+    font-style: normal;
+}
+
+a {
+    text-decoration: none;
+    color: black;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+table,
+th,
+td {
+    border: 1px solid black;
+}
+
+th,
+td {
+    padding: 8px;
+    text-align: left;
+}
+
+th {
+    background-color: #FFDFDF;
+}
+
+tr:nth-child(even) {
+    background-color: #FEFAF2;
+}
+
+tr:hover {
+    background-color: #ddd;
+}
+
+.delete-btn {
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+}
+
+.tabela {
+    background-color: #E78686;
+}
+
+
+.span {
+    background-color: #E78686;
+}
+
+footer {
+    margin: auto 0;
+
+}

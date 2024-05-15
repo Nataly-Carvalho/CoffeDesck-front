@@ -1,5 +1,6 @@
 import { Prioridade } from "./Prioridade"
 import { Setor } from "./Setor"
+import { Status } from "./Status"
 import { Tecnico } from "./Tecnico"
 import { User } from "./User"
 
@@ -14,6 +15,7 @@ export class Chamados{
     public usuario : User
     public setor: Setor
     public tecnico: Tecnico
+    public status: Status
 
 
 }

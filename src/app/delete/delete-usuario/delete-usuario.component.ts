@@ -22,7 +22,7 @@ export class DeleteUsuarioComponent implements OnInit {
 
   ngOnInit(): void {
     if (environment.token == '') {
-     // this.router.navigate(['/login'])
+     this.router.navigate(['/login'])
     }
     this.idUser = this.route.snapshot.params['id']
     this.findByIdUser(this.idUser)
@@ -35,7 +35,7 @@ export class DeleteUsuarioComponent implements OnInit {
 
   apagar() {
     this.authService.delete(this.idUser).subscribe(() => {
-      alert("Usuario apagaco com sucesso!")
+      alert("Usuario apagado com sucesso!")
       this.router.navigate(['/verclientes'])
     })
   }

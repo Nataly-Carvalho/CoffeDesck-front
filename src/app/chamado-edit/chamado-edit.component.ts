@@ -102,7 +102,7 @@ export class ChamadoEditComponent implements OnInit {
     this.prioridade.id = this.idPrioridade
     this.chamado.prioridade = this.prioridade
 
-    this.chamadoService.putChamados(this.chamado).subscribe(
+    this.chamadoService.updateTecnicoByID(this.chamado.id, this.chamado.tecnico).subscribe(
       (resp: Chamados) => {
         this.chamado = resp;
         this.router.navigate(['/tecnico']);

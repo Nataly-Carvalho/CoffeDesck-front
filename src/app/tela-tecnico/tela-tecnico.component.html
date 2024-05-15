@@ -60,7 +60,7 @@
                         <td>{{item.prioridade.nome}}</td>
                         <td>{{item.dataInicio| date: 'dd/MM/yyyy'}} às {{item.dataInicio | date: 'HH:mm'}}</td>
                         <td>
-                            <button type="button" class="btn botao ms-3" [routerLink]="['/chamadoedit',item.id]">Detalhes</button>
+                            <button type="button" class="btn botao ms-3" [routerLink]="['/chamadoedit',item.id,idTecnico]">Detalhes</button>
                         </td>
                     </tr>
                 </tbody>

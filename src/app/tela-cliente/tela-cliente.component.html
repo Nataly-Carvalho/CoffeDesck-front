@@ -62,7 +62,7 @@
                         <td class="tamanhotexto">{{item.titulo}}</td>
                         <td>{{item.prioridade.nome}}</td>
                         <td>{{item.dataInicio| date: 'dd/MM/yyyy'}} às {{item.dataInicio | date: 'HH:mm'}}</td>
-                        <td></td>
+                        <td>{{item.Status.nome}}</td>
                         <td><button (click)="abrirDetalhes(item)" type="button" class="btn botao" data-bs-toggle="modal"
                                 data-bs-target="#exampleModal">
                                 Detalhes
@@ -97,7 +97,7 @@
                         <td>
                             {{item.prioridade.nome}}</td>
                         <td>{{item.dataInicio| date: 'dd/MM/yyyy'}} às {{item.dataInicio | date: 'HH:mm'}}</td>
-                        <td></td>
+                        <td>{{item.Status.nome}}</td>
                         <td><button (click)="abrirDetalhes(item)" type="button" class="btn botao" data-bs-toggle="modal"
                                 data-bs-target="#exampleModal">
                                 Detalhes
@@ -186,6 +186,14 @@
                         <select [(ngModel)]="idPrioridade" (change)="findByIdSetor()" name="prioridade"
                             class="form-control">
                             <option *ngFor="let item of listaPrioridade" value="{{item.id}}">{{item.nome}}</option>
+
+                        </select>
+                    </div>
+                    <div class="mb-3 m-1">
+                        <label for="status">Status:</label>
+                        <select [(ngModel)]="idStatus" (change)="findByIdStatus()" name="status"
+                            class="form-control">
+                            <option *ngFor="let item of listaDeStatus" value="{{item.id}}">{{item.nome}}</option>
 
                         </select>
                     </div>

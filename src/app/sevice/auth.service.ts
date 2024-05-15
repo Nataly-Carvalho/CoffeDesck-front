@@ -36,6 +36,8 @@ export class AuthService {
   getAllUser():Observable<User[]>{
     return this.http.get<User[]>('http://localhost:8080/usuarios', this.token)
   }
+
+
   delete(id:number){
     return this.http.delete(`http://localhost:8080/usuarios/${id}`, this.token)
   }
@@ -50,6 +52,12 @@ export class AuthService {
   }
   getByIdTecnico(id:number):Observable<Tecnico>{
     return this.http.get<Tecnico>(`http://localhost:8080/tecnicos/${id}`)
+  }
+  getAllTecnico():Observable<Tecnico[]>{
+    return this.http.get<Tecnico[]>('http://localhost:8080/tecnicos', this.token)
+  }
+  deleteTecnico(id:number){
+    return this.http.delete(`http://localhost:8080/tecnicos/${id}`, this.token)
   }
 
 //Tecnico---------------------------------------------------------------------
