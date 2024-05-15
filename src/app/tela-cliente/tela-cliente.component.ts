@@ -8,6 +8,7 @@ import { GerenciamentoService } from '../sevice/gerenciamento.service';
 import { Prioridade } from '../model/Prioridade';
 import { Setor } from '../model/Setor';
 import { Router } from '@angular/router';
+import { Status } from '../model/Status';
 
 @Component({
   selector: 'app-tela-cliente',
@@ -18,6 +19,10 @@ export class TelaClienteComponent implements OnInit {
 
   chamado: Chamados = new Chamados();
   listaDeChamados: Chamados[];
+
+  status: Status = new Status();
+  listaDeStatus: Status[];
+  idStatus: number
 
   user: User = new User()
   idUser = environment.id
@@ -56,6 +61,7 @@ export class TelaClienteComponent implements OnInit {
     this.getAllSetores()
     this.getAllPrioridade()
     this.findByIdUser()
+    this.getAllStatus()
 
   }
 
@@ -83,6 +89,17 @@ findByIdUser(){
       this.listaPrioridade = resp
     })
   }
+  findByIdStatus(){
+    this.gerenciamento.getByIdStatus(this.idStatus).subscribe((resp: Status)=>{
+      this.status= resp
+
+    })
+  }
+  getAllStatus() {
+    this.gerenciamento.getAllStatus().subscribe((resp: Status[]) => {
+      this.listaDeStatus = resp
+    })
+  }
 
   findByIdSetor() {
     this.gerenciamento.getByIdSetor(this.idSetores).subscribe((resp: Setor) => {
@@ -106,6 +123,9 @@ findByIdUser(){
 
     this.prioridade.id = this.idPrioridade
     this.setor.id = this.idSetores
+
+    this.status.id = this.idStatus
+    this.chamado.status = this.status
 
     this.chamado.setor = this.setor
     this.chamado.prioridade = this.prioridade

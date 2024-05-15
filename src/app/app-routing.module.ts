@@ -11,6 +11,9 @@ import { VerClientesComponent } from './ver-clientes/ver-clientes.component';
 import { CadastroTecnicoComponent } from './cadastro-tecnico/cadastro-tecnico.component';
 import { GerenciamentoComponent } from './gerenciamento/gerenciamento.component';
 import { VerTecnicosComponent } from './ver-tecnicos/ver-tecnicos.component';
+import { ChamadoEditComponent } from './chamado-edit/chamado-edit.component';
+import { DeleteUsuarioComponent } from './delete/delete-usuario/delete-usuario.component';
+import { DeletetecnicoComponent } from './delete/deletetecnico/deletetecnico.component';
 
 
 const routes: Routes = [
@@ -26,7 +29,10 @@ const routes: Routes = [
   {path: 'verclientes', component:VerClientesComponent},
   {path: 'cadastrotecnico', component:CadastroTecnicoComponent},
   {path: 'vertecnico', component:VerTecnicosComponent},
-  {path: 'gerenciamento', component:GerenciamentoComponent}
+  {path: 'gerenciamento', component:GerenciamentoComponent},
+  {path: 'chamadoedit/:id/:id', component:ChamadoEditComponent},
+  {path: 'deleteusuario/:id',component:DeleteUsuarioComponent},
+  {path: 'deletetecnico/:id', component:DeletetecnicoComponent}
 ];
 
 

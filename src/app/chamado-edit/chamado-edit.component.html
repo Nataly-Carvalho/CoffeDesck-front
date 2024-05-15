@@ -1,0 +1,46 @@
+<div class="container mt-5 mb-5">
+    <div class="row">
+        <div class="col-md-12">
+            <h1 class="text-center fontBold mb-5 titulo">Atualizar chamado</h1>
+        </div>
+    </div>
+
+    <div class="row d-flex justify-content-center">
+        <div class="col-md-6">
+
+            <form class="cont">
+                <div class="mb-3 m-1">
+                    <h4 class="form-label">Solicitante: {{chamado.usuario.nome}}</h4>
+                </div>
+                <div class="mb-3 m-1">
+                    <label class="form-label">Título: {{chamado.titulo}}</label>
+                </div>
+                <div class="mb-3 m-1">
+                    <label class="form-label">Descrição: {{chamado.descricao}}</label>
+                </div>
+                <div class="mb-3 m-1">
+                    <label class="form-label">Setor: {{chamado.setor.nome}}</label>
+                </div>
+                <div class="mb-3 m-1">
+                    <label for="prioridade" class="form-label">Grau de prioridade:</label>
+                    <select [(ngModel)]="idPrioridade" name="prioridade" class="form-control">
+                        <option *ngFor="let item of listaPrioridade" [value]="item.id">{{ item.nome }}</option>
+                    </select>
+                </div>
+                <div class="mb-3 m-1">
+                    <label for="dataInicio" class="form-label">Data de Início: {{chamado.dataInicio}}</label>
+                </div>
+                <div class="mb-3 m-1">
+                    <label for="dataTermino" class="form-label">Data de Término:</label>
+                    <input [(ngModel)]="chamado.dataTermino" name="dataTermino" type="datetime-local" class="form-control" id="dataTermino">
+                </div>
+                <button type="button"  class="btn botao m-xl-4">Aceitar chamado</button>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary m-4"  routerLink="/tecnico">Voltar</button>
+                    <button type="button" class="btn botao" (click)="atualizar()">Salvar</button>
+                </div>
+            </form>
+            
+        </div>
+    </div>
+</div>

@@ -34,6 +34,7 @@ export class LoginComponent implements OnInit {
       console.log(environment.token);
       console.log(environment.nome);
       console.log(environment.id);
+      console.log(environment.role)
       this.router.navigate(['/admin']);
     }, error => {
       if (error.status == 401) {
@@ -58,6 +59,7 @@ export class LoginComponent implements OnInit {
       console.log(environment.token);
       console.log(environment.nome);
       console.log(environment.id);
+      console.log(environment.role)
       this.router.navigate(['/tecnico']);
     }, error => {
       if (error.status == 401) {

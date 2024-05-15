@@ -20,6 +20,9 @@ import { VerClientesComponent } from './ver-clientes/ver-clientes.component';
 import { VerChamadosComponent } from './ver-chamados/ver-chamados.component';
 import { VerTecnicosComponent } from './ver-tecnicos/ver-tecnicos.component';
 import { GerenciamentoComponent } from './gerenciamento/gerenciamento.component';
+import { ChamadoEditComponent } from './chamado-edit/chamado-edit.component';
+import { DeleteUsuarioComponent } from './delete/delete-usuario/delete-usuario.component';
+import { DeletetecnicoComponent } from './delete/deletetecnico/deletetecnico.component';
 
 
 @NgModule({
@@ -36,6 +39,9 @@ import { GerenciamentoComponent } from './gerenciamento/gerenciamento.component'
     VerChamadosComponent,
     VerTecnicosComponent,
     GerenciamentoComponent,
+    ChamadoEditComponent,
+    DeleteUsuarioComponent,
+    DeletetecnicoComponent,
   
   ],
   imports: [

@@ -20,7 +20,7 @@
             </div>
             <div>
                 <button type="button" class="btn botao ">
-                    Olá {{nome}} <i class="fa-solid fa-pen-to-square"></i>
+                    Olá,{{nome}} <i class="fa-solid fa-pen-to-square"></i>
                 </button>
             </div>
         </div>
@@ -48,60 +48,20 @@
                         <th>Prioridade</th>
                         <th>Data de Início</th>
                         <th>Detalhes</th>
+                        
                     </tr>
                 </thead>
-                <tbody *ngFor="let item of listaDeChamados">
+                <tbody *ngFor="let item of listaDeChamados |orderBy : key : reverse">
                     <tr>
                         <td>{{item.setor.nome}}</td>
                         <td class="texomaximo">
-                            {{item.titulo}}</td>
+                            {{item.titulo}}
+                        </td>
                         <td>{{item.prioridade.nome}}</td>
-                        <td>{{item.dataInicio}}</td>
+                        <td>{{item.dataInicio| date: 'dd/MM/yyyy'}} às {{item.dataInicio | date: 'HH:mm'}}</td>
                         <td>
-                            <button (click)="abrirDetalhes(item)"
-                            type="button" 
-                            class="btn botao" 
-                            data-bs-toggle="modal"
-                            data-bs-target="#exampleModal">
-                                Detalhes
-                            </button></td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-    </div>
-
-
-    <div class="container " id="chamados">
-        <div class="row justify-content-center">
-            <div class="col-12">
-                <h3>Seus Chamados</h3>
-            </div>
-        </div>
-        <div class="row d-flex align-items-center tabela-com-scroll">
-            <table>
-                <thead>
-                    <tr>
-                        <th>Usuário</th>
-                        <th>Setor</th>
-                        <th>Descrição</th>
-                        <th>Prioridade</th>
-                        <th>Data de Início</th>
-                        <th>Status</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>Usuário A</td>
-                        <td>Setor A</td>
-                        <td style="max-width: 200px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">
-                            Descrição da tarefa 1</td>
-                        <td>Alta</td>
-                        <td>2024-05-08</td>
-                        <td><button type="button" class="btn botao" data-bs-toggle="modal"
-                                data-bs-target="#exampleModal" >
-                                Status
-                            </button></td>
+                            <button type="button" class="btn botao ms-3" [routerLink]="['/chamadoedit',item.id,idTecnico]">Detalhes</button>
+                        </td>
                     </tr>
                 </tbody>
             </table>
@@ -150,64 +110,43 @@
     </footer>
 </body>
 
-
-
-    <!-- Modal -->
-    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content bg">
-                <div class="modal-header">
-                    <h1 class="modal-title fs-5" id="exampleModalLabel">Atualizar Chamado</h1>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    <div *ngIf="chamadoSelecionado">
-                        <form>
-                        <h5>Data de Abertura: <span> {{chamadoSelecionado.dataInicio}} </span></h5>
-                        <h5>Solicitante: <span>{{chamadoSelecionado.usuario.nome}}</span></h5>
-                        <h5>Setor: <span> {{chamadoSelecionado.setor.nome}}</span></h5>
-                        <h5>Grau de Prioridade: <span>{{chamadoSelecionado.prioridade.nome}}</span></h5>
-                        <h5>Descrição: <span>
-                            <textarea [(ngModel)]="chamado.descricao" name="descricao" class="form-control"
-                            id="message-text"></textarea>
-                        </span> </h5>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
-                            <button type="button" class="btn botao" (click)="atualizar()" data-bs-dismiss="modal">Salvar</button>
-                        </div>
-                    </form>
-                </div>
+<div class="modal fade" id="chamadosModal" tabindex="-1" aria-labelledby="chamadosModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="chamadosModalLabel">Chamados do Técnico</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Usuario</th>
+                            <th>Título</th>
+                            <th>Prioridade</th>
+                            <th>Data de Início</th>
+                            <th>Status</th>
+                            <th>Data Termino</th>
+                            
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let item of tecnico.chamados |orderBy : key : reverse">
+                            <td>{{item.usuario.nome}}</td>
+                            <td>{{ item.titulo}}</td>
+                            <td>{{ item.prioridade.nome }}</td>
+                            <td>{{ item.dataInicio }}</td>
+                            <td>{{item.status}}</td>
+                            <td>{{item.dataTermino}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn botao" data-bs-dismiss="modal">Fechar</button>
             </div>
         </div>
+    </div>
+</div>
 
-        <div class="modal fade" id="chamadosModal" tabindex="-1" aria-labelledby="chamadosModalLabel" aria-hidden="true">
-            <div class="modal-dialog modal-dialog-centered modal-lg">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="chamadosModalLabel">Chamados do Técnico</h5>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                    </div>
-                    <div class="modal-body ">
-                        <table class="table">
-                            <thead>
-                                <tr>
-                                    <th>Título</th>
-                                    <th>Prioridade</th>
-                                    <th>Data de Início</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr *ngFor="let item of user.chamados |orderBy : key : reverse">
-                                    <td>{{ item.titulo}}</td>
-                                    <td>{{ item.prioridade.nome }}</td>
-                                    <td>{{ item.dataInicio }}</td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn botao" data-bs-dismiss="modal">Fechar</button>
-                    </div>
-                </div>
-            </div>
-        </div>
+

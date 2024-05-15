@@ -6,6 +6,7 @@ import { environment } from 'src/environments/environment.prod';
 
 import { Setor } from '../model/Setor';
 import { Prioridade } from '../model/Prioridade';
+import { Status } from '../model/Status';
 
 @Injectable({
     providedIn: 'root'
@@ -27,6 +28,18 @@ export class GerenciamentoService {
     getByIdSetor(id:number):Observable<Setor>{
         return this.http.get<Setor>(`http://localhost:8080/gerenciamento/setor/${id}`, this.token)
     }
+
+
+    getAllStatus():Observable<Status[]>{
+        return this.http.get<Status[]>('http://localhost:8080/status/todosstatus',this.token)
+    }
+
+    getByIdStatus(id:number):Observable<Status>{
+        return this.http.get<Status>(`http://localhost:8080/status/${id}`, this.token)
+    }
+
+
+    
 
     getAllPrioridade():Observable<Prioridade[]>{
         return this.http.get<Prioridade[]>('http://localhost:8080/gerenciamento/allprioridade', this.token)

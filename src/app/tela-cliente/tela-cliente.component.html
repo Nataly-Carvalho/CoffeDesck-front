@@ -62,7 +62,7 @@
                         <td class="tamanhotexto">{{item.titulo}}</td>
                         <td>{{item.prioridade.nome}}</td>
                         <td>{{item.dataInicio| date: 'dd/MM/yyyy'}} às {{item.dataInicio | date: 'HH:mm'}}</td>
-                        <td></td>
+                        <td>{{item.Status.nome}}</td>
                         <td><button (click)="abrirDetalhes(item)" type="button" class="btn botao" data-bs-toggle="modal"
                                 data-bs-target="#exampleModal">
                                 Detalhes
@@ -97,7 +97,7 @@
                         <td>
                             {{item.prioridade.nome}}</td>
                         <td>{{item.dataInicio| date: 'dd/MM/yyyy'}} às {{item.dataInicio | date: 'HH:mm'}}</td>
-                        <td></td>
+                        <td>{{item.Status.nome}}</td>
                         <td><button (click)="abrirDetalhes(item)" type="button" class="btn botao" data-bs-toggle="modal"
                                 data-bs-target="#exampleModal">
                                 Detalhes
@@ -189,6 +189,14 @@
 
                         </select>
                     </div>
+                    <div class="mb-3 m-1">
+                        <label for="status">Status:</label>
+                        <select [(ngModel)]="idStatus" (change)="findByIdStatus()" name="status"
+                            class="form-control">
+                            <option *ngFor="let item of listaDeStatus" value="{{item.id}}">{{item.nome}}</option>
+
+                        </select>
+                    </div>
                     <div class="mb-3">
                         <label for="datetime">Data inicial:</label>
                         <input [(ngModel)]="chamado.dataInicio" (change)="findByIdPrioridade()" type="datetime-local"
@@ -259,7 +267,7 @@
     <div class="modal-dialog modal-dialog-centered modal-lg">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="chamadosModalLabel">Chamados do Técnico</h5>
+                <h5 class="modal-title" id="chamadosModalLabel">Seus Chamados</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">

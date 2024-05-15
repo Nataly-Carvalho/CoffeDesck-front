@@ -3,6 +3,7 @@ import { Injectable } from "@angular/core"
 import { Observable } from "rxjs";
 import { environment } from "src/environments/environment.prod"
 import { Chamados } from "../model/Chamados";
+import { Tecnico } from "../model/Tecnico";
 
 @Injectable({
     providedIn: 'root'
@@ -27,8 +28,11 @@ export class ChamadosService {
         return this.http.post<Chamados>(`http://localhost:8080/chamados`, chamado, this.token)
     }
     putChamados(chamado: Chamados): Observable<Chamados> {
-        return this.http.put<Chamados>('http://localhost:8080/chamados', chamado, this.token)
+        return this.http.put<Chamados>('http://localhost:8080/atualizar', chamado, this.token)
     }
+    updateTecnicoByID(id: string, tecnico: Tecnico): Observable<Chamados> {
+        return this.http.put<Chamados>(`http://localhost:8080/atualizar/${id}`, tecnico, this.token);
+      }
     deleteChamado(id: string) {
         return this.http.delete(`http://localhost:8080/chamados/${id}`, this.token)
     }

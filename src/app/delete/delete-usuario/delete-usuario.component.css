@@ -1,0 +1,144 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;1,300&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,500;1,500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter&display=swap');
+
+
+.botao {
+    background-color: #E78686;
+}
+
+.botaofonte {
+    font-size: 20px;
+}
+.botao2{
+    background-color: rgb(227, 55, 55);
+}
+
+.titulo{
+    color: #E78686;
+   
+
+}
+
+.bg {
+    background-color: #FEFAF2;
+    margin: 0;
+    padding: 0;
+    height: 100%;
+}
+
+.botao {
+    background-color: #E78686;
+}
+
+.botaofonte {
+    font-size: 20px;
+}
+
+.bg-cor {
+    background-color: #FFDFDF;
+}
+
+.vertical-line {
+    width: 1px;
+    height: 200px;
+    background-color: black;
+}
+
+a {
+    text-decoration: none;
+    color: black;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+table,
+th,
+td {
+    border: 1px solid black;
+}
+
+th,
+td {
+    padding: 8px;
+    text-align: left;
+}
+
+th {
+    background-color: #FFDFDF;
+}
+
+tr:nth-child(even) {
+    background-color: #FEFAF2;
+}
+
+tr:hover {
+    background-color: #FFDFDF;
+}
+
+select {
+    width: 100%;
+    padding: 6px;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+}
+
+.tabela {
+    background-color: #E78686;
+}
+
+.quant {
+    background-color: #FB9E9E;
+}
+
+.font {
+    font-size: 20px;
+}
+
+.tabela-com-scroll {
+    max-height: 500px;
+    overflow-y: auto;
+}
+.tamanhotexto{
+    max-width: 100px;
+    overflow: hidden; 
+    text-overflow: ellipsis; 
+    white-space: nowrap;
+}
+.modalb  {
+    margin-top: 20px;
+    overflow-y: auto;
+}
+.descricao-container {
+    display: flex;
+    flex-direction: column;
+}
+.modal-details {
+
+
+
+    .modal-details-infos {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+
+        h4 {
+            margin: 10px;
+        }
+
+        span {
+            font-weight: normal;
+        }
+    }
+}
+.footer {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    padding: 20px; 
+    text-align: center; 
+}
