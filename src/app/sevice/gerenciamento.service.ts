@@ -28,6 +28,8 @@ export class GerenciamentoService {
         return this.http.get<Setor>(`http://localhost:8080/gerenciamento/setor/${id}`, this.token)
     }
 
+    
+
     getAllPrioridade():Observable<Prioridade[]>{
         return this.http.get<Prioridade[]>('http://localhost:8080/gerenciamento/allprioridade', this.token)
     }

@@ -27,7 +27,7 @@ export class ChamadosService {
         return this.http.post<Chamados>(`http://localhost:8080/chamados`, chamado, this.token)
     }
     putChamados(chamado: Chamados): Observable<Chamados> {
-        return this.http.put<Chamados>('http://localhost:8080/chamados', chamado, this.token)
+        return this.http.put<Chamados>('http://localhost:8080/atualizar', chamado, this.token)
     }
     deleteChamado(id: string) {
         return this.http.delete(`http://localhost:8080/chamados/${id}`, this.token)

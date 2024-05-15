@@ -1,30 +1,27 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { environment } from 'src/environments/environment.prod';
-import { AuthService } from '../sevice/auth.service';
-import { GerenciamentoService } from '../sevice/gerenciamento.service';
-import { Tecnico } from '../model/Tecnico';
 import { Prioridade } from '../model/Prioridade';
-import { Setor } from '../model/Setor';
 import { Chamados } from '../model/Chamados';
-import { ChamadosService } from '../sevice/chamados.service';
 import { User } from '../model/User';
+import { Tecnico } from '../model/Tecnico';
+import { Setor } from '../model/Setor';
+import { environment } from 'src/environments/environment.prod';
+import { GerenciamentoService } from '../sevice/gerenciamento.service';
+import { ChamadosService } from '../sevice/chamados.service';
+import { AuthService } from '../sevice/auth.service';
 
 @Component({
-  selector: 'app-tela-tecnico',
-  templateUrl: './tela-tecnico.component.html',
-  styleUrls: ['./tela-tecnico.component.css']
+  selector: 'app-chamado-edit',
+  templateUrl: './chamado-edit.component.html',
+  styleUrls: ['./chamado-edit.component.css']
 })
-export class TelaTecnicoComponent implements OnInit {
-
+export class ChamadoEditComponent implements OnInit {
   chamado: Chamados = new Chamados();
   listaDeChamados: Chamados[];
   idChamado: string
 
-  tecnico:Tecnico = new Tecnico()
-  idTecnico = environment.id
-
-  chamadoSelecionado: Chamados;
+  tecnico: Tecnico = new Tecnico()
+  idTecnico: number
 
   idPrioridade: number;
   prioridade: Prioridade = new Prioridade;
@@ -36,33 +33,39 @@ export class TelaTecnicoComponent implements OnInit {
 
   nome = environment.nome
 
-  key = 'data'
-  reverse = true
-
   constructor(
     private router: Router,
-    private authService: AuthService,
     private route: ActivatedRoute,
     private gerenciamento: GerenciamentoService,
-    private chamadoService: ChamadosService
+    private chamadoService: ChamadosService,
+    private authService: AuthService,
   ) { }
 
-  ngOnInit(): void {
-    window.scroll(0,0)
-    if (environment.token == ''){
-      this.router.navigate(['/inicio'])
+  ngOnInit() {
+    window.scroll(0, 0)
+    if (environment.token == '') {
+      this.router.navigate(['/entrar'])
     }
     let id = this.route.snapshot.params['id']
-    
-    this.findByIdTecnico()
-    this.getAllChamados()
+
+    this.findByIdChamado(id)
     this.getAllSetores()
     this.getAllPrioridade()
-    
+
+
   }
-  findByIdTecnico(){
-    this.authService.getByIdTecnico(this.idTecnico).subscribe((resp:Tecnico)=>{
-      this.tecnico =resp
+
+
+  findByIdChamado(id: string) {
+    this.chamadoService.getByIdChamados(id).subscribe((resp: Chamados) => {
+      this.chamado = resp
+    })
+
+  }
+
+  findByIdTecnico(idTecnico: number) {
+    this.authService.getByIdTecnico(idTecnico).subscribe((resp: Tecnico) => {
+      this.tecnico = resp
     })
   }
   getAllChamados() {
@@ -82,26 +85,35 @@ export class TelaTecnicoComponent implements OnInit {
       this.listaSetor = resp
     })
   }
+
   findByIdPrioridade() {
     this.gerenciamento.getByIdPrioridade(this.idPrioridade).subscribe((resp: Prioridade) => {
       this.prioridade = resp
     })
   }
-
   getAllPrioridade() {
     this.gerenciamento.getAllPrioridade().subscribe((resp: Prioridade[]) => {
       this.listaPrioridade = resp
     })
   }
 
-  sair() {
-    this.router.navigate(['/inicio'])
-    environment.token = ''
-    environment.nome = ''
-    environment.id = 0
 
+  atualizar() {
+    this.prioridade.id = this.idPrioridade
+    this.chamado.prioridade = this.prioridade
+
+    this.chamadoService.putChamados(this.chamado).subscribe(
+      (resp: Chamados) => {
+        this.chamado = resp;
+        this.router.navigate(['/tecnico']);
+      },
+      (error) => {
+        console.error('Erro ao atualizar o chamado:', error);
+      }
+    );
   }
 
-  }
 
 
+
+}

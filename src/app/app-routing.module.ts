@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { Component, NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { InicioComponent } from './inicio/inicio.component';
 import { CadastroComponent } from './cadastro/cadastro.component';
@@ -11,6 +11,8 @@ import { VerClientesComponent } from './ver-clientes/ver-clientes.component';
 import { CadastroTecnicoComponent } from './cadastro-tecnico/cadastro-tecnico.component';
 import { GerenciamentoComponent } from './gerenciamento/gerenciamento.component';
 import { VerTecnicosComponent } from './ver-tecnicos/ver-tecnicos.component';
+import { ChamadoEditComponent } from './chamado-edit/chamado-edit.component';
+import { DeleteUsuarioComponent } from './delete/delete-usuario/delete-usuario.component';
 
 
 const routes: Routes = [
@@ -26,7 +28,9 @@ const routes: Routes = [
   {path: 'verclientes', component:VerClientesComponent},
   {path: 'cadastrotecnico', component:CadastroTecnicoComponent},
   {path: 'vertecnico', component:VerTecnicosComponent},
-  {path: 'gerenciamento', component:GerenciamentoComponent}
+  {path: 'gerenciamento', component:GerenciamentoComponent},
+  {path: 'chamadoedit/:id', component:ChamadoEditComponent},
+  {path: 'deleteusuario/:id',component:DeleteUsuarioComponent}
 ];
 
 
