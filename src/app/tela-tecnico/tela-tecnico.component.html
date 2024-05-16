@@ -48,6 +48,7 @@
                         <th>Prioridade</th>
                         <th>Data de Início</th>
                         <th>Detalhes</th>
+                        <th></th>
                         
                     </tr>
                 </thead>
@@ -60,8 +61,9 @@
                         <td>{{item.prioridade.nome}}</td>
                         <td>{{item.dataInicio| date: 'dd/MM/yyyy'}} às {{item.dataInicio | date: 'HH:mm'}}</td>
                         <td>
-                            <button type="button" class="btn botao ms-3" [routerLink]="['/chamadoedit',item.id,idTecnico]">Detalhes</button>
+                            <button type="button" class="btn botao ms-3" [routerLink]="['/chamadoedit',item.id]">Detalhes</button>
                         </td>
+                        <td><button type="button" class="btn botao ms-3"  [routerLink]="['/aceitarchamado',item.id]">Detalhes</button></td>
                     </tr>
                 </tbody>
             </table>

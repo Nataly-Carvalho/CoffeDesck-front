@@ -39,6 +39,7 @@ export class TelaTecnicoComponent implements OnInit {
   key = 'data'
   reverse = true
 
+  
   constructor(
     private router: Router,
     private authService: AuthService,
@@ -93,6 +94,7 @@ export class TelaTecnicoComponent implements OnInit {
       this.listaPrioridade = resp
     })
   }
+ 
 
   sair() {
     this.router.navigate(['/inicio'])

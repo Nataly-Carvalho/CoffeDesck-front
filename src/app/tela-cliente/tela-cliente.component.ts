@@ -42,6 +42,10 @@ export class TelaClienteComponent implements OnInit {
   key = 'data'
   reverse = true
 
+  filtro: string = 'finalizados';
+  listaChamadosFiltrados: Chamados[] = []; // Array para armazenar chamados filtrados
+
+
   constructor(
     private router: Router,
     private chamadoService: ChamadosService,
@@ -64,7 +68,6 @@ export class TelaClienteComponent implements OnInit {
     this.getAllStatus()
 
   }
-
 
   getAllSetores() {
     this.gerenciamento.getAllSetores().subscribe((resp: Setor[]) => {

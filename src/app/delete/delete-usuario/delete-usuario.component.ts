@@ -22,7 +22,7 @@ export class DeleteUsuarioComponent implements OnInit {
 
   ngOnInit(): void {
     if (environment.token == '') {
-     this.router.navigate(['/login'])
+    // this.router.navigate(['/login'])
     }
     this.idUser = this.route.snapshot.params['id']
     this.findByIdUser(this.idUser)

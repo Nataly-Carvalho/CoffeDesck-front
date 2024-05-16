@@ -23,6 +23,9 @@ import { GerenciamentoComponent } from './gerenciamento/gerenciamento.component'
 import { ChamadoEditComponent } from './chamado-edit/chamado-edit.component';
 import { DeleteUsuarioComponent } from './delete/delete-usuario/delete-usuario.component';
 import { DeletetecnicoComponent } from './delete/deletetecnico/deletetecnico.component';
+import { ChamadoadimEditComponent } from './edit/chamadoadim-edit/chamadoadim-edit.component';
+import { DeleteChamadoComponent } from './delete/delete-chamado/delete-chamado.component';
+import { AceitarchamadoComponent } from './aceitarchamado/aceitarchamado.component';
 
 
 @NgModule({
@@ -42,6 +45,9 @@ import { DeletetecnicoComponent } from './delete/deletetecnico/deletetecnico.com
     ChamadoEditComponent,
     DeleteUsuarioComponent,
     DeletetecnicoComponent,
+    ChamadoadimEditComponent,
+    DeleteChamadoComponent,
+    AceitarchamadoComponent,
   
   ],
   imports: [
