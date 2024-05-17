@@ -19,7 +19,7 @@
                 <button type="button" class="btn botao font ">
                     Olá,{{nome ? nome : ''}} <i class="fa-solid fa-pen-to-square"></i>
                 </button>
-                
+
             </div>
         </div>
     </nav>
@@ -139,15 +139,33 @@
                             id="message-text"></textarea>
                     </div>
                     <label for="Setor">Setor:</label>
+                    <select [(ngModel)]="idSetores" name="setor" class="form-control">
+                        <option value="1">Administrativo</option>
+                        <option value="2">Financeiro</option>
+                        <option value="3">Comercial</option>
+                        <option value="4">Operacional</option>
+                        <option value="5">Tecnologia da Informação</option>
+                        <option value="6">Recursos Humanos</option>
+                    </select>
+                    <!-- <label for="Setor">Setor:</label>
                         <select [(ngModel)]="idSetores" name="setor" class="form-control">
                             <option *ngFor="let item of listaSetor" value="{{item.id}}">{{item.nome}}</option>
-                        </select>
-                    <div class="mb-3 m-1">
+                        </select> -->
+                    <!-- <div class="mb-3 m-1">
                         <label for="prioridade">Grau de prioridade:</label>
                         <select [(ngModel)]="idPrioridade" (change)="findByIdSetor()" name="prioridade"
                             class="form-control">
                             <option *ngFor="let item of listaPrioridade" value="{{item.id}}">{{item.nome}}</option>
 
+                        </select>
+                    </div> -->
+                    <div class="mb-3 m-1">
+                        <label for="prioridade">Grau de prioridade:</label>
+                        <select [(ngModel)]="idPrioridade" (change)="findByIdSetor()" name="prioridade"
+                            class="form-control">
+                            <option value="1">Baixa</option>
+                            <option value="2">Media</option>
+                            <option value="3">Alta</option>
                         </select>
                     </div>
                     <div class="mb-3 m-1">
@@ -243,7 +261,7 @@
                             <td>{{ item.titulo}}</td>
                             <td>{{ item.status.nome }}</td>
                             <td><span>{{item.dataInicio| date: 'dd/MM/yyyy'}} às
-                                {{item.dataInicio | date: 'HH:mm'}} </span></td>
+                                    {{item.dataInicio | date: 'HH:mm'}} </span></td>
                         </tr>
                     </tbody>
                 </table>
