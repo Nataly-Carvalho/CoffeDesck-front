@@ -10,6 +10,7 @@ import { GerenciamentoService } from '../sevice/gerenciamento.service';
 import { ChamadosService } from '../sevice/chamados.service';
 import { AuthService } from '../sevice/auth.service';
 import { Status } from '../model/Status';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-chamado-edit',
@@ -114,26 +115,26 @@ export class ChamadoEditComponent implements OnInit {
     })
   }
 
-  updateTecnico() {
-    this.chamado.id = this.idChamado;
-    this.tecnico.id = this.idTecnico;
+  // updateTecnico() {
+  //   this.chamado.id = this.idChamado;
+  //   this.tecnico.id = this.idTecnico;
 
-    this.chamado.tecnico = this.tecnico;
+  //   this.chamado.tecnico = this.tecnico;
   
-    this.chamadoService.updateTecnicoByID(this.tecnico).subscribe(
-      (resp: Chamados) => {
-        // Atualiza o chamado com o técnico atualizado
-        this.chamado = resp;
+  //   this.chamadoService.updateTecnicoByID(this.tecnico).subscribe(
+  //     (resp: Chamados) => {
         
-        // Navega para a página de visualização do chamado
-        this.router.navigate(['/verchamado']);
-      },
-      (error) => {
-        // Trata qualquer erro de requisição
-        console.error('Erro ao atualizar técnico:', error);
-      }
-    );
-  }
+  //       this.chamado = resp;
+        
+       
+  //       this.router.navigate(['/verchamado']);
+  //     },
+  //     (error) => {
+        
+  //       console.error('Erro ao atualizar técnico:', error);
+  //     }
+  //   );
+  // }
   
 
 
@@ -151,15 +152,25 @@ export class ChamadoEditComponent implements OnInit {
     this.chamadoService.putChamados(this.chamado).subscribe(
       (resp: Chamados) => {
         this.chamado = resp;
-        this.router.navigate(['/tecnico']);
+        Swal.fire({
+          title: 'Sucesso',
+          text: 'Chamado atualizado com sucesso!',
+          icon: 'success',
+          confirmButtonText: 'OK'
+        }).then(() => {
+          this.router.navigate(['/tecnico']);
+        });
       },
       (error) => {
         console.error('Erro ao atualizar o chamado:', error);
+        Swal.fire({
+          title: 'Erro',
+          text: 'Ocorreu um erro ao atualizar o chamado. Por favor, tente novamente mais tarde.',
+          icon: 'error',
+          confirmButtonText: 'OK'
+        });
       }
     );
   }
-
-
-
 
 }

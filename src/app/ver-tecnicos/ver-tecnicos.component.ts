@@ -3,6 +3,7 @@ import { Tecnico } from '../model/Tecnico';
 import { AuthService } from '../sevice/auth.service';
 import { Router } from '@angular/router';
 import { environment } from 'src/environments/environment.prod';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-ver-tecnicos',
@@ -47,12 +48,25 @@ export class VerTecnicosComponent implements OnInit {
     this.tecnico.senha = this.tecnico.senha
     this.tecnico.email = this.tecnico.email
 
-    this.authService.updateTecnico(this.tecnico.id, this.tecnico).subscribe((resp: any) => {
-      this.getallTecnico();
-      console.log('Usuário editado com sucesso', resp);
-    }, error => {
-      console.error('Erro ao editar usuário', error);
-    });
-
+    this.authService.updateTecnico(this.tecnico.id, this.tecnico).subscribe(
+      (resp: any) => {
+        this.getallTecnico(); 
+        Swal.fire({
+          title: 'Sucesso',
+          text: 'Técnico editado com sucesso!',
+          icon: 'success',
+          confirmButtonText: 'OK'
+        });
+      },
+      error => {
+        console.error('Erro ao editar técnico:', error);
+        Swal.fire({
+          title: 'Erro',
+          text: 'Ocorreu um erro ao editar o técnico. Por favor, tente novamente mais tarde.',
+          icon: 'error',
+          confirmButtonText: 'OK'
+        });
+      }
+    );
   }
 }

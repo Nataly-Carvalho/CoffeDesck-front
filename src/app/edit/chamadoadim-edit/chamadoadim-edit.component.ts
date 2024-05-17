@@ -9,6 +9,7 @@ import { AuthService } from 'src/app/sevice/auth.service';
 import { ChamadosService } from 'src/app/sevice/chamados.service';
 import { GerenciamentoService } from 'src/app/sevice/gerenciamento.service';
 import { environment } from 'src/environments/environment.prod';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-chamadoadim-edit',
@@ -114,22 +115,35 @@ export class ChamadoadimEditComponent implements OnInit {
 
 
   atualizar() {
-    this.prioridade.id = this.idPrioridade
-    this.chamado.prioridade = this.prioridade
-    
-    this.setor.id = this.idSetores
-    this.chamado.setor = this.setor
+    this.prioridade.id = this.idPrioridade;
+    this.chamado.prioridade = this.prioridade;
 
-    this.status.id = this.idStatus
-    this.chamado.status = this.status
+    this.setor.id = this.idSetores;
+    this.chamado.setor = this.setor;
+
+    this.status.id = this.idStatus;
+    this.chamado.status = this.status;
 
     this.chamadoService.putChamados(this.chamado).subscribe(
       (resp: Chamados) => {
         this.chamado = resp;
-        this.router.navigate(['/verchamado']);
+        Swal.fire({
+          title: 'Sucesso',
+          text: 'Chamado atualizado com sucesso!',
+          icon: 'success',
+          confirmButtonText: 'OK'
+        }).then(() => {
+          this.router.navigate(['/verchamado']);
+        });
       },
       (error) => {
         console.error('Erro ao atualizar o chamado:', error);
+        Swal.fire({
+          title: 'Erro',
+          text: 'Ocorreu um erro ao atualizar o chamado. Por favor, tente novamente mais tarde.',
+          icon: 'error',
+          confirmButtonText: 'OK'
+        });
       }
     );
   }

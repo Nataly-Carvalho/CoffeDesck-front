@@ -10,6 +10,7 @@ import { Setor } from '../model/Setor';
 import { Router } from '@angular/router';
 import { Status } from '../model/Status';
 import { Tecnico } from '../model/Tecnico';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-tela-cliente',
@@ -156,11 +157,16 @@ findByIdUser(){
     this.chamadoService.postChamados(this.chamado).subscribe((resp: Chamados) => {
       this.chamado = resp
 
-      alert('O chamado foi registrado e será solucionado o mais breve possível.')
-
-      this.chamado = new Chamados()
-      this.getAllChamados()
-    })
+      Swal.fire({
+        title: 'Sucesso',
+        text: 'O chamado foi registrado e será solucionado o mais breve possível.',
+        icon: 'success',
+        confirmButtonText: 'OK'
+      }).then(() => {
+        this.chamado = new Chamados();
+        this.getAllChamados(); 
+      });
+    });
   }
 
   abrirDetalhes(chamado: Chamados) {

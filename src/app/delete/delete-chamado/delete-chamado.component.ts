@@ -3,6 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { Chamados } from 'src/app/model/Chamados';
 import { ChamadosService } from 'src/app/sevice/chamados.service';
 import { environment } from 'src/environments/environment.prod';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-delete-chamado',
@@ -35,10 +36,25 @@ export class DeleteChamadoComponent implements OnInit {
     })
   }
 
-  apagar(){
-    this.chamadoService.deleteChamado(this.idChamado).subscribe(()=>{
-      alert("Chamado apagado com sucesso")
-      this.router.navigate(['/verchamado'])
-    })
+  apagar() {
+    this.chamadoService.deleteChamado(this.idChamado).subscribe(() => {
+      Swal.fire({
+        title: 'Sucesso',
+        text: 'Chamado apagado com sucesso!',
+        icon: 'success',
+        confirmButtonText: 'OK'
+      }).then(() => {
+        this.router.navigate(['/verchamado']);
+      });
+    }, (error) => {
+      console.error('Erro ao apagar o chamado:', error);
+      Swal.fire({
+        title: 'Erro',
+        text: 'Ocorreu um erro ao apagar o chamado. Por favor, tente novamente mais tarde.',
+        icon: 'error',
+        confirmButtonText: 'OK'
+      });
+    });
   }
+
 }

@@ -3,6 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { Tecnico } from 'src/app/model/Tecnico';
 import { AuthService } from 'src/app/sevice/auth.service';
 import { environment } from 'src/environments/environment.prod';
+import Swal from 'sweetalert2'
 
 @Component({
   selector: 'app-deletetecnico',
@@ -35,8 +36,22 @@ export class DeletetecnicoComponent implements OnInit {
 
   apagar() {
     this.authService.deleteTecnico(this.idTecnico).subscribe(() => {
-      alert("Tecnico apagado com sucesso!")
-      this.router.navigate(['/vertecnico'])
-    })
+      Swal.fire({
+        title: 'Sucesso',
+        text: 'Técnico apagado com sucesso!',
+        icon: 'success',
+        confirmButtonText: 'OK'
+      }).then(() => {
+        this.router.navigate(['/vertecnico']);
+      });
+    }, (error) => {
+      console.error('Erro ao apagar o técnico:', error);
+      Swal.fire({
+        title: 'Erro',
+        text: 'Ocorreu um erro ao apagar o técnico. Por favor, tente novamente mais tarde.',
+        icon: 'error',
+        confirmButtonText: 'OK'
+      });
+    });
   }
 }

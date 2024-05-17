@@ -67,7 +67,7 @@
                         <td>
                             {{ item.prioridade ? item.prioridade.nome : 'Prioridade não definida' }}
                         </td>
-                        <td>{{ item.dataInicio }}</td>
+                        <td>{{ item.dataInicio| date: 'dd/MM/yyyy HH:mm' }}</td>
                         <td>
                             {{ item.status ? item.status.nome : 'Status não definido' }}
                         </td>

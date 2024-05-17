@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../sevice/auth.service';
 import { Router } from '@angular/router';
 import { Tecnico } from '../model/Tecnico';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-cadastro-tecnico',
@@ -28,15 +29,34 @@ export class CadastroTecnicoComponent implements OnInit {
   }
   cadastrar() {
     if (this.user.senha != this.confirmarSenha) {
-      alert('As senhas estão diferentes')
-
+      Swal.fire({
+        icon: 'error',
+        title: 'Erro',
+        text: 'As senhas estão diferentes',
+        confirmButtonText: 'OK'
+      });
     } else {
-      this.authService.cadastrarTecnico(this.user).subscribe((resp: Tecnico) => {
-        this.user = resp
-        this.router.navigate(['/login'])
-        alert('Tecnico Cadastrado com sucesso!')
-      })
-
+      this.authService.cadastrarTecnico(this.user).subscribe(
+        (resp: Tecnico) => {
+          this.user = resp;
+          this.router.navigate(['/login']);
+          Swal.fire({
+            icon: 'success',
+            title: 'Sucesso!',
+            text: 'Técnico cadastrado com sucesso!',
+            confirmButtonText: 'OK'
+          });
+        },
+        (error) => {
+          console.error('Erro ao cadastrar Técnico:', error);
+          Swal.fire({
+            icon: 'error',
+            title: 'Erro',
+            text: 'Ocorreu um erro ao cadastrar o técnico. Por favor, tente novamente mais tarde.',
+            confirmButtonText: 'OK'
+          });
+        }
+      );
     }
   }
 
