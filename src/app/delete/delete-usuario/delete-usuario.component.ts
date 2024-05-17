@@ -3,6 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { User } from 'src/app/model/User';
 import { AuthService } from 'src/app/sevice/auth.service';
 import { environment } from 'src/environments/environment.prod';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-delete-usuario',
@@ -35,8 +36,23 @@ export class DeleteUsuarioComponent implements OnInit {
 
   apagar() {
     this.authService.delete(this.idUser).subscribe(() => {
-      alert("Usuario apagado com sucesso!")
-      this.router.navigate(['/verclientes'])
-    })
+      Swal.fire({
+        title: 'Sucesso',
+        text: 'Usuário apagado com sucesso!',
+        icon: 'success',
+        confirmButtonText: 'OK'
+      }).then(() => {
+        this.router.navigate(['/verclientes']);
+      });
+    }, (error) => {
+      console.error('Erro ao apagar o usuário:', error);
+      Swal.fire({
+        title: 'Erro',
+        text: 'Ocorreu um erro ao apagar o usuário. Por favor, tente novamente mais tarde.',
+        icon: 'error',
+        confirmButtonText: 'OK'
+      });
+    });
   }
+
 }

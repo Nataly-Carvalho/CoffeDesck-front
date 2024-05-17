@@ -9,6 +9,7 @@ import { Setor } from '../model/Setor';
 import { Chamados } from '../model/Chamados';
 import { ChamadosService } from '../sevice/chamados.service';
 import { User } from '../model/User';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-tela-tecnico',
@@ -77,8 +78,18 @@ export class TelaTecnicoComponent implements OnInit {
     })
   }
   filtrarChamadosPorTecnico() {
-    this.chamadosFiltradosPorTecnico = 
-    this.listaDeChamados.filter(chamado => chamado.tecnico.id === this.idTecnico);
+    console.log('ID do Técnico:', this.idTecnico);
+    console.log('Lista de Chamados:', this.listaDeChamados);
+  
+    this.chamadosFiltradosPorTecnico = this.listaDeChamados.filter(chamado => {
+      if (chamado.tecnico && chamado.tecnico.id && this.idTecnico) {
+        return chamado.tecnico.id === this.idTecnico;
+      } else {
+        return false; // Ignorar chamados sem técnico definido ou sem ID
+      }
+    });
+  
+    console.log('Chamados Filtrados:', this.chamadosFiltradosPorTecnico);
   }
   
   getallTecnico(){
@@ -128,10 +139,22 @@ export class TelaTecnicoComponent implements OnInit {
       (updatedChamado: Chamados) => {
         this.chamado = updatedChamado;
   
-        alert('Você aceitou o chamado!');
+        Swal.fire({
+          icon: 'success',
+          title: 'Chamado aceito!',
+          text: 'Você aceitou o chamado com sucesso!',
+          confirmButtonText: 'OK'
+        });
       },
       (error) => {
         console.error('Erro ao atualizar Chamado:', error);
+  
+        Swal.fire({
+          icon: 'error',
+          title: 'Erro',
+          text: 'Ocorreu um erro ao atualizar o chamado. Por favor, tente novamente mais tarde.',
+          confirmButtonText: 'OK'
+        });
       }
     );
   }

@@ -5,6 +5,10 @@ import { AuthService } from 'src/app/sevice/auth.service';
 import { ChamadosService } from 'src/app/sevice/chamados.service';
 import { GerenciamentoService } from 'src/app/sevice/gerenciamento.service';
 import { environment } from 'src/environments/environment.prod';
+import { Prioridade } from '../model/Prioridade';
+import { User } from '../model/User';
+import { Tecnico } from '../model/Tecnico';
+import { Setor } from '../model/Setor';
 
 
 
@@ -15,12 +19,38 @@ import { environment } from 'src/environments/environment.prod';
 })
 export class VerChamadosComponent implements OnInit {
 
-  chamado: Chamados = new Chamados()
-  listaDeChamados: Chamados[]
-  
+  chamado: Chamados = new Chamados();
+  listaDeChamados: Chamados[];
+  idChamado: string
+
+  tecnico:Tecnico = new Tecnico()
+  idTecnico = environment.id
+  listaDeTecnico: Tecnico[]
+
+  user:User=  new User()
+  idUser: number
+  listaDeusuarios: User[]
+
+  chamadoSelecionado: Chamados;
+
+  idPrioridade: number;
+  prioridade: Prioridade = new Prioridade;
+  listaPrioridade: Prioridade[];
+
+  idSetores: number;
+  setor: Setor = new Setor;
+  listaSetor: Setor[];
+  idTecnicoParaBusca: number;
+  nome = environment.nome
+
+  key = 'data'
+  reverse = true
+
 
   constructor( private router: Router,
-    private chamadoService: ChamadosService
+    private chamadoService: ChamadosService,
+    private authService: AuthService,
+    private gerenciamento: GerenciamentoService
   ) { }
 
  
@@ -29,9 +59,11 @@ export class VerChamadosComponent implements OnInit {
       if (environment.token == ''){
         this.router.navigate(['/inicio'])
       }
-
       this.getAllChamados()
-      
+      this.getAllSetores()
+      this.getAllPrioridade()
+      this.getallTecnico()
+      this.getallUsers()
     }
 
     findByIdChamado(id:string){
@@ -39,12 +71,35 @@ export class VerChamadosComponent implements OnInit {
         this.chamado = resp
       })
     }
+    getAllPrioridade() {
+      this.gerenciamento.getAllPrioridade().subscribe((resp: Prioridade[]) => {
+        this.listaPrioridade = resp
+      })
+    }
+    getAllSetores() {
+      this.gerenciamento.getAllSetores().subscribe((resp: Setor[]) => {
+        this.listaSetor = resp
+      })
+    }
 
-    getAllChamados(){
-      this.chamadoService.getAllChamados().subscribe((resp: Chamados[])=>{
+   
+    getallTecnico(){
+      this.authService.getAllTecnico().subscribe((resp: Tecnico[])=>{
+        this.listaDeTecnico = resp
+      })
+    }
+    getallUsers(){
+      this.authService.getAllUser().subscribe((resp:User[])=>{
+        this.listaDeusuarios = resp
+      })
+    }
+  
+    getAllChamados() {
+      this.chamadoService.getAllChamados().subscribe((resp: Chamados[]) => {
         this.listaDeChamados = resp
       })
     }
+  
     
   
     sair() {

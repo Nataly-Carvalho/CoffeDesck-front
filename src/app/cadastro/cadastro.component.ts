@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../sevice/auth.service';
 import { Router } from '@angular/router';
 import { User } from '../model/User';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-cadastro',
@@ -27,16 +28,24 @@ export class CadastroComponent implements OnInit {
 
   }
   cadastrar() {
-    if (this.user.senha != this.confirmarSenha) {
-      alert('As senhas estão diferentes')
-
+    if (this.user.senha !== this.confirmarSenha) {
+      Swal.fire({
+        title: 'Erro',
+        text: 'As senhas estão diferentes',
+        icon: 'error',
+        confirmButtonText: 'OK'
+      });
     } else {
       this.authService.cadastrar(this.user).subscribe((resp: User) => {
-        this.user = resp
-        this.router.navigate(['/login'])
-        alert('Usuário Cadastrado com sucesso!')
-      })
-
+        this.user = resp;
+        this.router.navigate(['/login']);
+        Swal.fire({
+          title: 'Sucesso',
+          text: 'Usuário cadastrado com sucesso!',
+          icon: 'success',
+          confirmButtonText: 'OK'
+        });
+      });
     }
   }
 }

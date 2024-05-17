@@ -22,16 +22,22 @@
                     <label class="form-label">Descrição:</label>
                     <textarea [(ngModel)]="chamado.descricao" name="descricao" class="form-control" rows="3"></textarea>
                 </div>
+                <label for="Setor">Setor:</label>
+                <select [(ngModel)]="idSetores" name="setor" class="form-control">
+                    <option value="1">Administrativo</option>
+                    <option value="2">Financeiro</option>
+                    <option value="3">Comercial</option>
+                    <option value="4">Operacional</option>
+                    <option value="5">Tecnologia da Informação</option>
+                    <option value="6">Recursos Humanos</option>
+                </select>
                 <div class="mb-3 m-1">
-                    <label for="setor" class="form-label">Setor:</label>
-                    <select [(ngModel)]="idSetores" name="setor" class="form-control">
-                        <option *ngFor="let item of listaSetor" [value]="item.id">{{ item.nome }}</option>
-                    </select>
-                </div>
-                <div class="mb-3 m-1">
-                    <label for="prioridade" class="form-label">Grau de prioridade:</label>
-                    <select [(ngModel)]="idPrioridade" name="prioridade" class="form-control">
-                        <option *ngFor="let item of listaPrioridade" [value]="item.id">{{ item.nome }}</option>
+                    <label for="prioridade">Grau de prioridade:</label>
+                    <select [(ngModel)]="idPrioridade" (change)="findByIdSetor()" name="prioridade"
+                        class="form-control">
+                        <option value="1">Baixa</option>
+                        <option value="2">Media</option>
+                        <option value="3">Alta</option>
                     </select>
                 </div>
                 <div class="mb-3 m-1">

@@ -3,6 +3,7 @@ import { AuthService } from '../sevice/auth.service';
 import { User } from '../model/User';
 import { environment } from 'src/environments/environment.prod';
 import { Router } from '@angular/router';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-ver-clientes',
@@ -51,19 +52,26 @@ export class VerClientesComponent implements OnInit {
   }
 
   editarUsuario() {
-
-    this.user.role = "USER"
-    this.user.nome = this.usuario.nome
-    this.user.senha = this.usuario.senha
-    this.user.email = this.usuario.email
-
-    this.authService.updateCliente(this.usuario.id, this.user).subscribe((resp: any) => {
-      this.getallUsers();
-      console.log('Usuário editado com sucesso', resp);
-    }, error => {
-      console.error('Erro ao editar usuário', error);
-    });
-
-
+    this.usuario.role = "USER";
+    this.authService.updateCliente(this.usuario.id, this.usuario).subscribe(
+      (resp: any) => {
+        this.getallUsers(); // Supondo que você tenha um método para obter todos os usuários
+        Swal.fire({
+          title: 'Sucesso',
+          text: 'Usuário editado com sucesso!',
+          icon: 'success',
+          confirmButtonText: 'OK'
+        });
+      },
+      error => {
+        console.error('Erro ao editar usuário:', error);
+        Swal.fire({
+          title: 'Erro',
+          text: 'Ocorreu um erro ao editar o usuário. Por favor, tente novamente mais tarde.',
+          icon: 'error',
+          confirmButtonText: 'OK'
+        });
+      }
+    );
   }
 }
