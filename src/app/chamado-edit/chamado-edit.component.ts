@@ -19,7 +19,7 @@ import { Status } from '../model/Status';
 export class ChamadoEditComponent implements OnInit {
   chamado: Chamados = new Chamados();
   listaDeChamados: Chamados[];
-  idChamado: string
+  idChamado : string
 
   tecnico: Tecnico = new Tecnico()
   idTecnico: number
@@ -60,7 +60,6 @@ export class ChamadoEditComponent implements OnInit {
     this.getAllPrioridade()
     this.getAllStatus()
   }
-
 
   findByIdChamado(id: string) {
     this.chamadoService.getByIdChamados(id).subscribe((resp: Chamados) => {
@@ -115,6 +114,27 @@ export class ChamadoEditComponent implements OnInit {
     })
   }
 
+  updateTecnico() {
+    this.chamado.id = this.idChamado;
+    this.tecnico.id = this.idTecnico;
+
+    this.chamado.tecnico = this.tecnico;
+  
+    this.chamadoService.updateTecnicoByID(this.tecnico).subscribe(
+      (resp: Chamados) => {
+        // Atualiza o chamado com o técnico atualizado
+        this.chamado = resp;
+        
+        // Navega para a página de visualização do chamado
+        this.router.navigate(['/verchamado']);
+      },
+      (error) => {
+        // Trata qualquer erro de requisição
+        console.error('Erro ao atualizar técnico:', error);
+      }
+    );
+  }
+  
 
 
   atualizar() {

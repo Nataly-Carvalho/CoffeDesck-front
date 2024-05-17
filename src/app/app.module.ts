@@ -25,7 +25,7 @@ import { DeleteUsuarioComponent } from './delete/delete-usuario/delete-usuario.c
 import { DeletetecnicoComponent } from './delete/deletetecnico/deletetecnico.component';
 import { ChamadoadimEditComponent } from './edit/chamadoadim-edit/chamadoadim-edit.component';
 import { DeleteChamadoComponent } from './delete/delete-chamado/delete-chamado.component';
-import { AceitarchamadoComponent } from './aceitarchamado/aceitarchamado.component';
+
 
 
 @NgModule({
@@ -47,7 +47,8 @@ import { AceitarchamadoComponent } from './aceitarchamado/aceitarchamado.compone
     DeletetecnicoComponent,
     ChamadoadimEditComponent,
     DeleteChamadoComponent,
-    AceitarchamadoComponent,
+    
+    
   
   ],
   imports: [

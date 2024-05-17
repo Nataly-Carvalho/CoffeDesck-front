@@ -57,7 +57,6 @@ export class ChamadoadimEditComponent implements OnInit {
     this.getAllPrioridade()
     this.getAllStatus()
 
-
   }
 
 

@@ -31,7 +31,7 @@
             <h3>Chamados disponiveis</h3>
         </div>
         <div class="col-7 text-end">
-            <button type="button" (click)="findByIdTecnico()"class="btn botao font m-3" data-bs-toggle="modal" data-bs-target="#chamadosModal">Ver
+            <button type="button" (click)="filtrarChamadosPorTecnico()" class="btn botao font m-3" data-bs-toggle="modal" data-bs-target="#chamadosModal">Ver
                 Seus Chamados</button>
             <button onclick="" class="btn botao m-3 botaofonte" (click)="sair()">Sair <i
                     class="fa-solid fa-arrow-right-from-bracket"></i></button>
@@ -47,12 +47,13 @@
                         <th>Título</th>
                         <th>Prioridade</th>
                         <th>Data de Início</th>
+                        <th>Status</th>
                         <th>Detalhes</th>
                         <th></th>
                         
                     </tr>
                 </thead>
-                <tbody *ngFor="let item of listaDeChamados |orderBy : key : reverse">
+                <tbody *ngFor="let item of listaDeChamados |orderBy : key : reverse" >
                     <tr>
                         <td>{{item.setor.nome}}</td>
                         <td class="texomaximo">
@@ -60,10 +61,11 @@
                         </td>
                         <td>{{item.prioridade.nome}}</td>
                         <td>{{item.dataInicio| date: 'dd/MM/yyyy'}} às {{item.dataInicio | date: 'HH:mm'}}</td>
+                        <td>{{item.status.nome}}</td>
                         <td>
                             <button type="button" class="btn botao ms-3" [routerLink]="['/chamadoedit',item.id]">Detalhes</button>
                         </td>
-                        <td><button type="button" class="btn botao ms-3"  [routerLink]="['/aceitarchamado',item.id]">Detalhes</button></td>
+                        <td><button type="button" class="btn botao ms-3" (click)="updateTecnico(item)">Aceitar Chamado</button></td>
                     </tr>
                 </tbody>
             </table>
@@ -73,7 +75,7 @@
     <br>
     <br>
 
-    <footer class="bg-cor">
+    <footer class="bg-cor footer">
         <div class="row">
             <div class="col-md-4 mt-5 text-center estilo">
                 <p>Transformando demandas em <br>
@@ -128,18 +130,18 @@
                             <th>Prioridade</th>
                             <th>Data de Início</th>
                             <th>Status</th>
-                            <th>Data Termino</th>
+                            <th>Prioridade</th>
                             
                         </tr>
                     </thead>
                     <tbody>
-                        <tr *ngFor="let item of tecnico.chamados |orderBy : key : reverse">
+                        <tr *ngFor="let item of chamadosFiltradosPorTecnico">
                             <td>{{item.usuario.nome}}</td>
                             <td>{{ item.titulo}}</td>
                             <td>{{ item.prioridade.nome }}</td>
                             <td>{{ item.dataInicio }}</td>
-                            <td>{{item.status}}</td>
-                            <td>{{item.dataTermino}}</td>
+                            <td>{{item.status.nome}}</td>
+                            <td>{{item.prioridade.nome}}</td>
                         </tr>
                     </tbody>
                 </table>

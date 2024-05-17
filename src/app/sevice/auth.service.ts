@@ -6,7 +6,6 @@ import { UserLogin } from '../model/UserLogin';
 import { environment } from 'src/environments/environment.prod';
 import { Tecnico } from '../model/Tecnico';
 import { Admin } from '../model/Admin';
-import { Chamados } from '../model/Chamados';
 
 
 @Injectable({
@@ -36,10 +35,11 @@ export class AuthService {
   getAllUser():Observable<User[]>{
     return this.http.get<User[]>('http://localhost:8080/usuarios', this.token)
   }
-
-
   delete(id:number){
     return this.http.delete(`http://localhost:8080/usuarios/${id}`, this.token)
+  }
+  updateCliente(id:number, user:User){
+    return this.http.put(`http://localhost:8080/usuarios/${id}`,user, this.token)
   }
 
   //Cliente-------------------------------------------------------------------
@@ -58,6 +58,9 @@ export class AuthService {
   }
   deleteTecnico(id:number){
     return this.http.delete(`http://localhost:8080/tecnicos/${id}`, this.token)
+  }
+  updateTecnico(id:number, tecnico:Tecnico){
+    return this.http.put(`http://localhost:8080/tecnicos/${id}`,tecnico, this.token)
   }
 
 //Tecnico---------------------------------------------------------------------

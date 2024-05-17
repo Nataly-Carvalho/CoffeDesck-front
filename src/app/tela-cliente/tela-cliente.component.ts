@@ -9,6 +9,7 @@ import { Prioridade } from '../model/Prioridade';
 import { Setor } from '../model/Setor';
 import { Router } from '@angular/router';
 import { Status } from '../model/Status';
+import { Tecnico } from '../model/Tecnico';
 
 @Component({
   selector: 'app-tela-cliente',
@@ -23,6 +24,10 @@ export class TelaClienteComponent implements OnInit {
   status: Status = new Status();
   listaDeStatus: Status[];
   idStatus: number
+
+  tecnico: Tecnico = new Tecnico();
+  listaDeTecnico: Tecnico[];
+  idTecnico: number
 
   user: User = new User()
   idUser = environment.id
@@ -58,7 +63,7 @@ export class TelaClienteComponent implements OnInit {
   ngOnInit(): void {
     window.scroll(0,0)
     if (environment.token == ''){
-      this.router.navigate(['/inicio'])
+      //this.router.navigate(['/inicio'])
     }
 
     this.getAllChamados()
@@ -66,6 +71,7 @@ export class TelaClienteComponent implements OnInit {
     this.getAllPrioridade()
     this.findByIdUser()
     this.getAllStatus()
+    this.getallTecnico()
 
   }
 
@@ -80,6 +86,17 @@ findByIdUser(){
     this.user =resp
   })
 }
+
+  findByIdTecnico(){
+    this.authService.getByIdTecnico(this.idTecnico).subscribe((resp: Tecnico)=>{
+      this.tecnico = resp
+    })
+  }
+  getallTecnico(){
+    this.authService.getAllTecnico().subscribe((resp: Tecnico[])=>{
+      this.listaDeTecnico = resp
+    })
+  }
 
   findByIdPrioridade() {
     this.gerenciamento.getByIdPrioridade(this.idPrioridade).subscribe((resp: Prioridade) => {
@@ -139,7 +156,7 @@ findByIdUser(){
     this.chamadoService.postChamados(this.chamado).subscribe((resp: Chamados) => {
       this.chamado = resp
 
-      alert('Chamado criado com sucesso!')
+      alert('O chamado foi registrado e será solucionado o mais breve possível.')
 
       this.chamado = new Chamados()
       this.getAllChamados()

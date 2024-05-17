@@ -13,9 +13,6 @@
                     <li class="nav-item">
                         <a class="nav-link font" href="#chamadodis">Chamados Abertos</a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link font" href="#chamados">Chamados Encerrados</a>
-                    </li>
                 </ul>
             </div>
             <div>
@@ -77,7 +74,7 @@
     <br>
     <br>
 
-    <footer class="bg-cor">
+    <footer class="bg-cor footer">
         <div class="row">
             <div class="col-md-4 mt-5 text-center estilo">
                 <p>Transformando demandas em <br>
@@ -141,12 +138,10 @@
                         <textarea [(ngModel)]="chamado.descricao" name="descricao" class="form-control"
                             id="message-text"></textarea>
                     </div>
-                    <div class="row mb-3 m-1">
-                        <label for="Setor">Setor:</label>
+                    <label for="Setor">Setor:</label>
                         <select [(ngModel)]="idSetores" name="setor" class="form-control">
                             <option *ngFor="let item of listaSetor" value="{{item.id}}">{{item.nome}}</option>
                         </select>
-                    </div>
                     <div class="mb-3 m-1">
                         <label for="prioridade">Grau de prioridade:</label>
                         <select [(ngModel)]="idPrioridade" (change)="findByIdSetor()" name="prioridade"
@@ -195,7 +190,6 @@
                 <div class="mb-3">
                     <h5>Titulo: <span>{{chamadoSelecionado.titulo}} </span></h5>
                 </div>
-
 
                 <div class="mb-3">
                     <h5>Data de Abertura: <span>{{chamadoSelecionado.dataInicio| date: 'dd/MM/yyyy'}} às
