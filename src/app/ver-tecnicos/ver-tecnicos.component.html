@@ -13,10 +13,11 @@
                     Serviços
                 </button>
                 <ul class="dropdown-menu">
-                    <li><a class="dropdown-item" routerLink="/admin">Cadastrar novo técnico</a></li>
+                    <li><a class="dropdown-item" routerLink="/admin">Ir para a tela principal</a></li>
                     <li><a class="dropdown-item" routerLink="/cadastrotecnico">Cadastrar novo técnico</a></li>
                     <li><a class="dropdown-item" routerLink="/verchamado">Ver todos os chamados</a></li>
                     <li><a class="dropdown-item" routerLink="/vertecnico">Visualizar técnicos</a></li>
+                    <li><a class="dropdown-item" routerLink="/verclientes">Visualizar clientes</a></li>
                 </ul>
             </div>
         </div>
@@ -30,18 +31,25 @@
             <table>
                 <thead>
                     <tr class="tabela">
+                        <th>Id</th>
                         <th>Usuário</th>
                         <th>E-mail</th>
-                        <th>Apagar Usuario</th>
+                        <th>Apagar Tecnico</th>
+                        <th>Editar Tecnico</th>
                     </tr>
                 </thead>
                 <tbody *ngFor="let item of listaTecnico">
                     <tr>
+                        <td>{{item.id}}</td>
                         <td>{{item.nome}}</td>
                         <td>{{item.email}}</td>
                         <td>
-                            <button class="btn " [routerLink]="['/deletetecnico', item.id]"><i class="fa-solid fa-trash-can"></i> </button>
+                            <button class="btn botao" [routerLink]="['/deletetecnico', item.id]"><i class="fa-solid fa-trash-can"></i></button>
                             
+                        </td>
+                        <td>
+                            <button type="button" class="btn botao" data-bs-toggle="modal"
+                                data-bs-target="#exampleModal" data-bs-whatever="@fat"  (click)="selecionarUsuario(item)">Editar</button>
                         </td>
                     </tr>
                     
@@ -87,3 +95,36 @@
     </footer>
 
 </body>
+
+
+
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="exampleModalLabel">Atualizar Usuario</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <div class="mb-3">
+                        <label for="recipient-name" class="col-form-label">Nome:</label>
+                        <input type="text" class="form-control" name="nome" id="nome"[(ngModel)]="tecnico.nome">
+                    </div>
+                    <div class="mb-3">
+                        <label for="message-text" class="col-form-label">Email:</label>
+                        <input class="form-control" type="text" name="email" id="email" [(ngModel)]="tecnico.email">
+                    </div>
+                    <div class="mb-3">
+                        <label for="message-text" class="col-form-label">Senha:</label>
+                        <input class="form-control" type="password" name="senha" id="senha"[(ngModel)]="tecnico.senha">
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
+                <button type="button" class="btn botao" data-bs-dismiss="modal" (click)="editarTecnico()">Atualizar</button>
+            </div>
+        </div>
+    </div>
+</div>

@@ -34,7 +34,7 @@ export class CadastroTecnicoComponent implements OnInit {
       this.authService.cadastrarTecnico(this.user).subscribe((resp: Tecnico) => {
         this.user = resp
         this.router.navigate(['/login'])
-        alert('Usuário Cadastrado com sucesso!')
+        alert('Tecnico Cadastrado com sucesso!')
       })
 
     }

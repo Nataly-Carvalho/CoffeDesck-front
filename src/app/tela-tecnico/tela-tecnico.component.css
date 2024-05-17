@@ -87,3 +87,6 @@ select {
     text-overflow: ellipsis;
     white-space: nowrap;
 }
+.footer{
+    font-family: 'Inria Serif', sans-serif;
+}

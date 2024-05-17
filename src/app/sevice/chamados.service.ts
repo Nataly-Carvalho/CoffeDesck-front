@@ -30,9 +30,11 @@ export class ChamadosService {
     putChamados(chamado: Chamados): Observable<Chamados> {
         return this.http.put<Chamados>('http://localhost:8080/atualizar', chamado, this.token)
     }
-    updateTecnicoByID(id: string, tecnico: Tecnico): Observable<Chamados> {
-        return this.http.put<Chamados>(`http://localhost:8080/atualizar/${id}`, tecnico, this.token);
-      }
+
+    updateTecnicoByID( tecnico: Tecnico): Observable<Chamados> {
+        return this.http.put<Chamados>(`http://localhost:8080/atualizar`, tecnico,  this.token);
+    }
+
     deleteChamado(id: string) {
         return this.http.delete(`http://localhost:8080/chamados/${id}`, this.token)
     }

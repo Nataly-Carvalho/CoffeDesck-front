@@ -1,1 +1,124 @@
-<p>ver-chamados works!</p>
+<body class="bg">
+    <nav class="navbar navbar-expand-lg bg">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">
+                <img src="https://i.imgur.com/v1kM2Pw.png" alt="Logo" width="200" class="d-inline-block align-text-top">
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="btn-group dropstart">
+                <button type="button" class="btn botao dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                    Serviços
+                </button>
+                <ul class="dropdown-menu">
+                    <li><a class="dropdown-item" routerLink="/admin">Ir para a tela principal</a></li>
+                    <li><a class="dropdown-item" routerLink="/cadastrotecnico">Cadastrar novo técnico</a></li>
+                    <li><a class="dropdown-item" routerLink="/verchamado">Ver todos os chamados</a></li>
+                    <li><a class="dropdown-item" routerLink="/vertecnico">Visualizar técnicos</a></li>
+                    <li><a class="dropdown-item" routerLink="/verclientes">Visualizar clientes</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <hr class="mb-lg-">
+    <!-- <div class="container text-center">
+        <div class="row mb-5">
+            <div class="col bg-cor">
+                <h3>3</h3>
+                <h4>Chamados em aberto</h4>
+            </div>
+            <div class="col quant">
+                <h3>3</h3>
+                <h4>Chamados Finalizados</h4>
+            </div>
+        </div>
+    </div>
+
+    <div class="row text-center">
+        <div class="col-5">
+            <h1>Todos os chamados</h1>
+        </div>
+
+    </div> -->
+
+    <div class="container tabela-com-scroll">
+        <div class="row mb-5">
+            <table>
+                <thead>
+                    <tr class="tabela">
+                        <th>Usuário</th>
+                        <th>Setor</th>
+                        <th>Titulo</th>
+                        <th>Prioridade</th>
+                        <th>Data de Início</th>
+                        <th>Status</th>
+                        <th>Técnico Atribuído</th>
+                        <th>Editar</th>
+                        <th>Apagar</th>
+                    </tr>
+                </thead>
+                <tbody >
+                    <tr *ngFor="let item of listaDeChamados">
+                        <td class="texomaximo">{{ item.usuario ? item.usuario.nome : 'Usuário não definido' }}</td>
+                        <td>{{ item.setor ? item.setor.nome : 'Setor não definido' }}</td>
+                        <td class="texomaximo">{{ item.titulo }}</td>
+                        <td>
+                            {{ item.prioridade ? item.prioridade.nome : 'Prioridade não definida' }}
+                        </td>
+                        <td>{{ item.dataInicio }}</td>
+                        <td>
+                            {{ item.status ? item.status.nome : 'Status não definido' }}
+                        </td>
+                        <td>{{ item.tecnico ? item.tecnico.nome : 'Técnico não definido' }}</td>
+                        <td>
+                            <button type="button" class="botao btn" [routerLink]="['/chamadoeditadmin', item.id]">Editar</button>
+                        </td>
+                        <td><button type="button" class="btn botao " [routerLink]="['/excluirchamado',item.id]"><i class="fa-solid fa-trash-can"></i> </button></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+
+    <footer class="bg-cor mt-5">
+        <div class="row">
+            <div class="col-md-4 mt-5 text-center estilo">
+                <p>Transformando demandas em <br>
+                    soluções, nossa plataforma <br>
+                    de chamados técnicos oferece<br>
+                    eficiência e excelência em cada
+                    <br>
+                    interação
+                </p>
+            </div>
+            <div class="col-md-1">
+                <div class="vertical-line mt-5 mb-3"></div>
+            </div>
+            <div class="col-md-3 mt-5 estilo">
+                <h6>Contato</h6>
+                <p> Email: coffedesck@gmail.com
+                    <br>
+                    Numero: 99 9999-9999
+                    <br>
+                    Endereço: <br>
+                    R. Manuel da Nóbrega, 986 - cjto 1122
+                    <br> - Paraíso, São Paulo - SP, 04001-003
+                </p>
+            </div>
+            <div class="col-md-3 mt-5">
+                <iframe
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3656.8290210047494!2d-46.65735152529391!3d-23.57458347879069!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94ce59ea735dfcf3%3A0xee7ef175148a9fe9!2sR.%20Manuel%20da%20N%C3%B3brega%2C%20986%20-%20Para%C3%ADso%2C%20S%C3%A3o%20Paulo%20-%20SP%2C%2004001-003!5e0!3m2!1spt-BR!2sbr!4v1715147028176!5m2!1spt-BR!2sbr"
+                    width="256" height="160" style="border:0;" allowfullscreen="" loading="lazy"
+                    referrerpolicy="no-referrer-when-downgrade">
+                </iframe>
+            </div>
+        </div>
+        <div class="footer-copyright bg-dark text-center">
+            <span class="text-light"> © 2024 Copyright </span>
+        </div>
+    </footer>
+
+</body>

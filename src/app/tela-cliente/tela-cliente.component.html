@@ -13,15 +13,13 @@
                     <li class="nav-item">
                         <a class="nav-link font" href="#chamadodis">Chamados Abertos</a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link font" href="#chamados">Chamados Encerrados</a>
-                    </li>
                 </ul>
             </div>
             <div>
                 <button type="button" class="btn botao font ">
-                    Olá,{{nome}} <i class="fa-solid fa-pen-to-square"></i>
+                    Olá,{{nome ? nome : ''}} <i class="fa-solid fa-pen-to-square"></i>
                 </button>
+
             </div>
         </div>
     </nav>
@@ -35,7 +33,8 @@
             <button type="button" class="btn bg-cor font" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
                 Abrir Novo Chamado</button>
 
-            <button type="button" (click)="findByIdUser()"class="btn botao font m-3" data-bs-toggle="modal" data-bs-target="#chamadosModal">Ver
+            <button type="button" (click)="findByIdUser()" class="btn botao font m-3" data-bs-toggle="modal"
+                data-bs-target="#chamadosModal">Ver
                 Seus Chamados</button>
 
 
@@ -62,7 +61,7 @@
                         <td class="tamanhotexto">{{item.titulo}}</td>
                         <td>{{item.prioridade.nome}}</td>
                         <td>{{item.dataInicio| date: 'dd/MM/yyyy'}} às {{item.dataInicio | date: 'HH:mm'}}</td>
-                        <td>{{item.Status.nome}}</td>
+                        <td>{{item.status.nome}}</td>
                         <td><button (click)="abrirDetalhes(item)" type="button" class="btn botao" data-bs-toggle="modal"
                                 data-bs-target="#exampleModal">
                                 Detalhes
@@ -72,46 +71,10 @@
             </table>
         </div>
     </div>
-
-
-    <div class="container " id="chamados">
-        <div class="row justify-content-center">
-            <div class="col-12">
-                <h3>Chamados Encerrados</h3>
-            </div>
-        </div>
-        <div class="row d-flex align-items-center tabela-com-scroll">
-            <table>
-                <thead>
-                    <tr>
-                        <th>Titulo</th>
-                        <th>Prioridade</th>
-                        <th>Data de Início</th>
-                        <th>Status</th>
-                        <th>Detalhes</th>
-                    </tr>
-                </thead>
-                <tbody *ngFor="let item of listaDeChamados |orderBy : key : reverse">
-                    <tr>
-                        <td class="tamanhotexto">{{item.titulo}}</td>
-                        <td>
-                            {{item.prioridade.nome}}</td>
-                        <td>{{item.dataInicio| date: 'dd/MM/yyyy'}} às {{item.dataInicio | date: 'HH:mm'}}</td>
-                        <td>{{item.Status.nome}}</td>
-                        <td><button (click)="abrirDetalhes(item)" type="button" class="btn botao" data-bs-toggle="modal"
-                                data-bs-target="#exampleModal">
-                                Detalhes
-                            </button></td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-    </div>
-
     <br>
     <br>
 
-    <footer class="bg-cor">
+    <footer class="bg-cor footer">
         <div class="row">
             <div class="col-md-4 mt-5 text-center estilo">
                 <p>Transformando demandas em <br>
@@ -175,25 +138,40 @@
                         <textarea [(ngModel)]="chamado.descricao" name="descricao" class="form-control"
                             id="message-text"></textarea>
                     </div>
-                    <div class="row mb-3 m-1">
-                        <label for="Setor">Setor:</label>
+                    <label for="Setor">Setor:</label>
+                    <select [(ngModel)]="idSetores" name="setor" class="form-control">
+                        <option value="1">Administrativo</option>
+                        <option value="2">Financeiro</option>
+                        <option value="3">Comercial</option>
+                        <option value="4">Operacional</option>
+                        <option value="5">Tecnologia da Informação</option>
+                        <option value="6">Recursos Humanos</option>
+                    </select>
+                    <!-- <label for="Setor">Setor:</label>
                         <select [(ngModel)]="idSetores" name="setor" class="form-control">
                             <option *ngFor="let item of listaSetor" value="{{item.id}}">{{item.nome}}</option>
-                        </select>
-                    </div>
-                    <div class="mb-3 m-1">
+                        </select> -->
+                    <!-- <div class="mb-3 m-1">
                         <label for="prioridade">Grau de prioridade:</label>
                         <select [(ngModel)]="idPrioridade" (change)="findByIdSetor()" name="prioridade"
                             class="form-control">
                             <option *ngFor="let item of listaPrioridade" value="{{item.id}}">{{item.nome}}</option>
 
                         </select>
+                    </div> -->
+                    <div class="mb-3 m-1">
+                        <label for="prioridade">Grau de prioridade:</label>
+                        <select [(ngModel)]="idPrioridade" (change)="findByIdSetor()" name="prioridade"
+                            class="form-control">
+                            <option value="1">Baixa</option>
+                            <option value="2">Media</option>
+                            <option value="3">Alta</option>
+                        </select>
                     </div>
                     <div class="mb-3 m-1">
                         <label for="status">Status:</label>
-                        <select [(ngModel)]="idStatus" (change)="findByIdStatus()" name="status"
-                            class="form-control">
-                            <option *ngFor="let item of listaDeStatus" value="{{item.id}}">{{item.nome}}</option>
+                        <select [(ngModel)]="idStatus" (change)="findByIdStatus()" name="status" class="form-control">
+                            <option value="1" selected>Aguardando Técnico</option>
 
                         </select>
                     </div>
@@ -224,13 +202,12 @@
                 <h1 class="modal-title fs-5" id="exampleModalLabel">Detalhes</h1>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
-            <div class="modal-body modalb d-flex flex-column modal-details-infos " *ngIf="chamadoSelecionado">
+            <div class="modal-body modalb d-flex flex-column modal-details-infos" *ngIf="chamadoSelecionado">
 
 
                 <div class="mb-3">
                     <h5>Titulo: <span>{{chamadoSelecionado.titulo}} </span></h5>
                 </div>
-
 
                 <div class="mb-3">
                     <h5>Data de Abertura: <span>{{chamadoSelecionado.dataInicio| date: 'dd/MM/yyyy'}} às
@@ -243,7 +220,7 @@
                     <h5>Setor: <span>{{chamadoSelecionado.setor.nome}} </span></h5>
                 </div>
                 <div class="mb-3">
-                    <h5>Status: <span></span></h5>
+                    <h5>Status: <span>{{chamadoSelecionado.status.nome}}</span></h5>
                 </div>
                 <div class="mb-3">
                     <h5>Grau de Prioridade: <span>{{chamadoSelecionado.prioridade.nome}}</span></h5>
@@ -271,19 +248,20 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <table class="table">
+                <table class="table tabela-com-scroll">
                     <thead>
                         <tr>
                             <th>Título</th>
-                            <th>Prioridade</th>
+                            <th>Status</th>
                             <th>Data de Início</th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr *ngFor="let item of user.chamados |orderBy : key : reverse">
                             <td>{{ item.titulo}}</td>
-                            <td>{{ item.prioridade.nome }}</td>
-                            <td>{{ item.dataInicio }}</td>
+                            <td>{{ item.status.nome }}</td>
+                            <td><span>{{item.dataInicio| date: 'dd/MM/yyyy'}} às
+                                    {{item.dataInicio | date: 'HH:mm'}} </span></td>
                         </tr>
                     </tbody>
                 </table>

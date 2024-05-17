@@ -12,14 +12,21 @@
                 <div class="mb-3 m-1">
                     <h4 class="form-label">Solicitante: {{chamado.usuario.nome}}</h4>
                 </div>
+
                 <div class="mb-3 m-1">
-                    <label class="form-label">Título: {{chamado.titulo}}</label>
+                    <label class="form-label">Título:</label>
+                    <input [(ngModel)]="chamado.titulo" name="titulo" type="text" class="form-control">
+                </div>
+
+                <div class="mb-3 m-1">
+                    <label class="form-label">Descrição:</label>
+                    <textarea [(ngModel)]="chamado.descricao" name="descricao" class="form-control" rows="3"></textarea>
                 </div>
                 <div class="mb-3 m-1">
-                    <label class="form-label">Descrição: {{chamado.descricao}}</label>
-                </div>
-                <div class="mb-3 m-1">
-                    <label class="form-label">Setor: {{chamado.setor.nome}}</label>
+                    <label for="setor" class="form-label">Setor:</label>
+                    <select [(ngModel)]="idSetores" name="setor" class="form-control">
+                        <option *ngFor="let item of listaSetor" [value]="item.id">{{ item.nome }}</option>
+                    </select>
                 </div>
                 <div class="mb-3 m-1">
                     <label for="prioridade" class="form-label">Grau de prioridade:</label>
@@ -33,15 +40,25 @@
                         <option *ngFor="let item of listaDeStatus" [value]="item.id">{{ item.nome }}</option>
                     </select>
                 </div>
+
                 <div class="mb-3 m-1">
                     <label for="dataInicio" class="form-label">Data de Início: {{chamado.dataInicio}}</label>
                 </div>
+
+                <div class="mb-3 m-1">
+                    <label for="dataTermino" class="form-label">Data de Término:</label>
+                    <input [(ngModel)]="chamado.dataTermino" name="dataTermino" type="datetime-local"
+                        class="form-control" id="dataTermino">
+                </div>
+                
+
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary m-4"  routerLink="/tecnico">Voltar</button>
+                    
+                    <button type="button" class="btn btn-secondary m-4" routerLink="/verchamado">Voltar</button>
                     <button type="button" class="btn botao" (click)="atualizar()">Salvar</button>
                 </div>
             </form>
-            
+
         </div>
     </div>
 </div>

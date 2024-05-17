@@ -23,6 +23,11 @@ export class TelaTecnicoComponent implements OnInit {
 
   tecnico:Tecnico = new Tecnico()
   idTecnico = environment.id
+  listaDeTecnico: Tecnico[]
+
+  user:User=  new User()
+  idUser: number
+  listaDeusuarios: User[]
 
   chamadoSelecionado: Chamados;
 
@@ -33,12 +38,14 @@ export class TelaTecnicoComponent implements OnInit {
   idSetores: number;
   setor: Setor = new Setor;
   listaSetor: Setor[];
-
+  idTecnicoParaBusca: number;
   nome = environment.nome
 
   key = 'data'
   reverse = true
 
+  chamadosFiltradosPorTecnico: Chamados[] = [];
+  
   constructor(
     private router: Router,
     private authService: AuthService,
@@ -58,6 +65,10 @@ export class TelaTecnicoComponent implements OnInit {
     this.getAllChamados()
     this.getAllSetores()
     this.getAllPrioridade()
+    this.getallTecnico()
+    this.getallUsers()
+    this.filtrarChamadosPorTecnico();
+    this.idTecnicoParaBusca = id;
     
   }
   findByIdTecnico(){
@@ -65,6 +76,22 @@ export class TelaTecnicoComponent implements OnInit {
       this.tecnico =resp
     })
   }
+  filtrarChamadosPorTecnico() {
+    this.chamadosFiltradosPorTecnico = 
+    this.listaDeChamados.filter(chamado => chamado.tecnico.id === this.idTecnico);
+  }
+  
+  getallTecnico(){
+    this.authService.getAllTecnico().subscribe((resp: Tecnico[])=>{
+      this.listaDeTecnico = resp
+    })
+  }
+  getallUsers(){
+    this.authService.getAllUser().subscribe((resp:User[])=>{
+      this.listaDeusuarios = resp
+    })
+  }
+
   getAllChamados() {
     this.chamadoService.getAllChamados().subscribe((resp: Chamados[]) => {
       this.listaDeChamados = resp
@@ -76,6 +103,8 @@ export class TelaTecnicoComponent implements OnInit {
       this.setor = resp
     })
   }
+  abrirDetalhes(chamado: Chamados) {
+    this.chamadoSelecionado = chamado; }
 
   getAllSetores() {
     this.gerenciamento.getAllSetores().subscribe((resp: Setor[]) => {
@@ -93,6 +122,20 @@ export class TelaTecnicoComponent implements OnInit {
       this.listaPrioridade = resp
     })
   }
+  updateTecnico(chamado: Chamados): void {
+    chamado.tecnico = this.tecnico;
+    this.chamadoService.putChamados(chamado).subscribe(
+      (updatedChamado: Chamados) => {
+        this.chamado = updatedChamado;
+  
+        alert('Você aceitou o chamado!');
+      },
+      (error) => {
+        console.error('Erro ao atualizar Chamado:', error);
+      }
+    );
+  }
+
 
   sair() {
     this.router.navigate(['/inicio'])
