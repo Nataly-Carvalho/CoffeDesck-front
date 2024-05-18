@@ -72,8 +72,8 @@ essenciais Além disso, CRUD de tecnico,Usuarios e Chamados
 <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/angular/angular-original.svg" width="50" height="50"/><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/html5/html5-original.svg" width="50" height="50"/><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/css3/css3-original.svg" width="50" height="50"/><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/bootstrap/bootstrap-original.svg" width="50" height="50"/>       
 </div>
 
-### 💅Repositorio Front end
-[Link do github](https://github.com/Nataly-Carvalho/CoffeDesck-front)
+### 🤖Repositorio Back end
+[Link do github](https://github.com/Nataly-Carvalho/ChamadosProjetoFinal)
 
 ### 📑Documentação do Swagger
 [PDF com documentação](https://descomplica2-my.sharepoint.com/:b:/g/personal/nataly_2322956_aluno_faculdadedescomplica_com_br/Efaj8JCfFttJrcL6rchqPgABiVptaw_G01yZRySkR4KYPw?e=azQpaJ)
