@@ -40,13 +40,16 @@ Este projeto consiste no desenvolvimento de um sistema completo de chamados téc
 - Tela do Administrador
 - Visão abrangente do uso do sistema.
 - Dados essenciais como número de chamados em aberto, em execução e aguardando.
-- Gerenciamento de setores da empresa e tipos de prioridade.
-- Essa tela oferece uma visão abrangente do uso do sistema, fornecendo dados
-essenciais Além disso, CRUD de tecnico,Usuarios e Chamados
+- Gerenciamento de tecnicos, Usuarios e Chamados.
+
   ![Gif tela inicial](https://i.imgur.com/tSMgwkO.png)
 
+### ✨Demostração do sistema
+[Video demostração](https://www.youtube.com/watch?v=7pB_NXm795w&t=1s)
+
+
 ### 🎲 DER Banco de dados
- ![Gif tela inicial](https://i.imgur.com/j3zd5mg.png)
+ ![Gif tela inicial](https://i.imgur.com/y7gIgwR.png)
 
 
 # 🍃Especificações do Sistema Utilizadas
@@ -56,6 +59,7 @@ essenciais Além disso, CRUD de tecnico,Usuarios e Chamados
 - Banco de dados MySQL.
 - Versionamento no GitHub.
 - Disponibilização de uma API RESTful.
+- Angular para o Front end
 
 # 🤖Tecnologias Usadas
 - Back End
@@ -69,11 +73,16 @@ essenciais Além disso, CRUD de tecnico,Usuarios e Chamados
 <br>
 - Front End
 <div style="display: flex; align-items: center;">
-<img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/angular/angular-original.svg" width="50" height="50"/><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/html5/html5-original.svg" width="50" height="50"/><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/css3/css3-original.svg" width="50" height="50"/><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/bootstrap/bootstrap-original.svg" width="50" height="50"/>       
+<img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/angular/angular-original.svg" width="50" height="50"/><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/html5/html5-original.svg" width="50" height="50"/><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/css3/css3-original.svg" width="50" height="50"/><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/bootstrap/bootstrap-original.svg" width="50" height="50"/><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/figma/figma-original.svg" width="50" height="50" /><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/typescript/typescript-original.svg" width="50" height="50" />          
 </div>
+- IDES
+<div style="display: flex; align-items: center;">
+<img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/intellij/intellij-original.svg" width="50" height="50" /><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/vscode/vscode-original.svg" width="50" height="50" />
+</div>         
+          
 
-### 🤖Repositorio Back end
-[Link do github](https://github.com/Nataly-Carvalho/ChamadosProjetoFinal)
+### 💅Repositorio Front end
+[Link do github](https://github.com/Nataly-Carvalho/CoffeDesck-front)
 
 ### 📑Documentação do Swagger
 [PDF com documentação](https://descomplica2-my.sharepoint.com/:b:/g/personal/nataly_2322956_aluno_faculdadedescomplica_com_br/Efaj8JCfFttJrcL6rchqPgABiVptaw_G01yZRySkR4KYPw?e=azQpaJ)
@@ -101,18 +110,67 @@ essenciais Além disso, CRUD de tecnico,Usuarios e Chamados
 
 # ‼️Como Executar o Projeto
 - Clone o repositório do GitHub:
--     git clone https://github.com/seu-usuario/nome-do-repositorio.git
+-     git clone https://github.com/Nataly-Carvalho/ChamadosProjetoFinal
 - Importe o projeto para sua IDE favorita.
-- Configure o banco de dados MySQL conforme as configurações do arquivo application.properties.
+- Configure o banco de dados MySQL conforme as configurações do arquivo application-dev.properties.
 - Execute o projeto.
 # Equipe
-
-☕[Lays Sousa](https://github.com/laregn)
-<br>
-☕[Juliana Rodrigues](https://github.com/jucrodrigues)
-<br>
-☕[Gracielle Pereira](https://github.com/Gracielle-Pereira)
-<br>
-☕[Bianca Bareto](https://github.com/BiancalBarreto)
-<br>
-☕[Nataly Carvalho](https://github.com/Nataly-Carvalho?tab=repositories)
+<table>
+  <tr>
+    <td align="center">
+      <a href="https://github.com/laregn">
+        <img src="https://avatars.githubusercontent.com/laregn?s=100" alt="Lays Sousa"/><br>
+        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg" width="20" height="20" alt="GitHub"/>
+        Lays Sousa
+      </a><br>
+      <a href="https://www.linkedin.com/in/laysregn/">
+        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/linkedin/linkedin-original.svg" width="20" height="20" alt="LinkedIn"/>
+        LinkedIn
+      </a>
+    </td>
+    <td align="center">
+      <a href="https://github.com/jucrodrigues">
+        <img src="https://avatars.githubusercontent.com/jucrodrigues?s=100" alt="Juliana Rodrigues"/><br>
+         <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg" width="20" height="20" alt="GitHub"/>
+        Juliana Rodrigues
+      </a><br>
+      <a href="https://www.linkedin.com/in/juliana-crodrigues/">
+        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/linkedin/linkedin-original.svg" width="20" height="20" alt="LinkedIn"/>
+        LinkedIn
+      </a>
+    </td>
+    <td align="center">
+      <a href="https://github.com/Gracielle-Pereira">
+        <img src="https://avatars.githubusercontent.com/Gracielle-Pereira?s=100" alt="Gracielle Pereira"/><br>
+         <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg" width="20" height="20" alt="GitHub"/>
+        Gracielle Pereira
+      </a><br>
+      <a href="https://www.linkedin.com/in/gracielle-pereira/">
+        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/linkedin/linkedin-original.svg" width="20" height="20" alt="LinkedIn"/>
+        LinkedIn
+      </a>
+    </td>
+    <td align="center">
+      <a href="https://github.com/BiancalBarreto">
+        <img src="https://i.imgur.com/7nZB7MD.jpg?s=100" width="100" height="100" alt="Bianca Bareto"/><br>
+         <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg" width="20" height="20" alt="GitHub"/>
+        Bianca Bareto
+      </a><br>
+      <a href="https://www.linkedin.com/in/biancaleandrobarreto/">
+        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/linkedin/linkedin-original.svg" width="20" height="20" alt="LinkedIn"/>
+        LinkedIn
+      </a>
+    </td>
+    <td align="center">
+      <a href="https://github.com/Nataly-Carvalho?tab=repositories">
+        <img src="https://avatars.githubusercontent.com/Nataly-Carvalho?s=100" alt="Nataly Carvalho"/><br>
+         <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg" width="20" height="20" alt="GitHub"/>
+        Nataly Carvalho
+      </a><br>
+      <a href="https://www.linkedin.com/in/nataly-carvalho-silva/">
+        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/linkedin/linkedin-original.svg" width="20" height="20" alt="LinkedIn"/>
+        LinkedIn
+      </a>
+    </td>
+  </tr>
+</table>
